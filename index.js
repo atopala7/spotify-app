@@ -75,8 +75,6 @@ app.get("/callback", (req, res) => {
 	})
 		.then(response => {
 			if (response.status === 200) {
-				// const { access_token, token_type } = response.data;
-				// const { refresh_token } = response.data;
 				const { access_token, refresh_token } = response.data;
 
 				const queryParams = querystring.stringify({
@@ -86,19 +84,6 @@ app.get("/callback", (req, res) => {
 
 				// Redirect the user to the Angular app, with the access and refresh tokens as parameters
 				res.redirect(`http://localhost:4200/?${queryParams}`);
-
-				//axios.get("https://api.spotify.com/v1/me/player/currently-playing", {
-				//axios.get(`http://localhost:8888/refresh_token?refresh_token=${refresh_token}`)
-				// 	headers: {
-				// 		Authorization: `${token_type} ${access_token}`
-				// 	}
-				// })
-				//.then(response => {
-				//	res.send(`<pre>${JSON.stringify(response.data, null, 2)}</pre>`);
-				//})
-				//.catch(error => {
-				//	res.send(error);
-				//});
 			}
 			else {
 				res.redirect(`/?${querystring.stringify({ error: 'invalid_token' })}`);
