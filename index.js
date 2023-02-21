@@ -99,6 +99,7 @@ app.get("/refresh_token", (req, res) => {
 	const { refresh_token } = req.query;
 	console.log("refresh_token: " + refresh_token);
 
+	// Send a POST request to the Spotify Accounts Service /api/token endpoint
 	axios({
 		method: "post",
 		url: "https://accounts.spotify.com/api/token",
