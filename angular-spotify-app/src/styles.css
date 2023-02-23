@@ -1,1 +1,62 @@
-/* You can add global styles to this file, and also import other style files */
+/* Application-wide Styles */
+h1 {
+    color: rgb(75, 213, 238);
+    /* font-family: Arial, Helvetica, sans-serif; */
+    font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+    font-weight: 400;
+    font-size: 300%;
+    opacity: 0;
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+ 
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+     }
+}
+
+h2, h3 {
+    color: #FFFF82;
+    /* font-family: Arial, Helvetica, sans-serif; */
+    font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+    font-weight: lighter;   
+}
+body {
+    background-color: #333;
+    margin: 2em;
+}
+body, input[type="text"], button {
+    color: #FFFF82;
+    font-family: Cambria, Georgia, serif;
+}
+button {
+    background-color: #eee;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: black;
+    font-size: 1.2rem;
+    padding: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+button:hover {
+    background-color: black;
+    color: white;
+}
+button:disabled {
+    background-color: #eee;
+    color: #aaa;
+    cursor: auto;
+}
+
+/* everywhere else */
+* {
+font-family: Arial, Helvetica, sans-serif;
+}
