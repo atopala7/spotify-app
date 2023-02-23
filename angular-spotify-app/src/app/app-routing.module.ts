@@ -3,17 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { DataComponent } from './data/data.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/data', pathMatch: 'full' },
+  // { path: '', redirectTo: '/data', pathMatch: 'full' },
   { path: 'data', component: DataComponent }
 ];
 
 @NgModule({
-  declarations: [],
-  imports: [
-    RouterModule.forRoot(routes)
-  ],
-  exports: [
-    RouterModule
-  ]
+  imports: [ RouterModule.forRoot(routes) ],
+  exports: [ RouterModule ]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

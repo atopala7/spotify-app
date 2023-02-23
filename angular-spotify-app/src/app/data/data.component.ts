@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
-import { interval } from 'rxjs';
+import { interval, filter } from 'rxjs';
 
 
 import { Song } from '../song'
 import { DataService } from '../data.service';
+import { AppModule } from '../app.module';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-data',
@@ -13,7 +16,8 @@ import { DataService } from '../data.service';
 })
 export class DataComponent implements OnInit {
   constructor(
-    private dataService: DataService) {}
+    private dataService: DataService,
+    private route: ActivatedRoute) {}
 
   data: Object | undefined;
   cleanData: String | undefined;
@@ -22,15 +26,8 @@ export class DataComponent implements OnInit {
   access_token: string | undefined;
 
   ngOnInit(): void {
-    // this.route.queryParams
-    //   .subscribe(params => {
-    //     console.log(params);
-    //     this.access_token = params['access_token'];
-    //     console.log(`access_token: ${this.access_token}`)});
-
     this.getData();
-    //const source = interval(10);
-    //setInterval(this.dataService.getData, 1000);
+
   }
 
   getData(): void {

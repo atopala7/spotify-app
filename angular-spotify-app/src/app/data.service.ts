@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { Data } from './data';
-
+import { AppComponent } from './app.component';
 
 @Injectable({
   providedIn: 'root'
@@ -17,16 +17,27 @@ export class DataService {
   ) { }
 
   private dataUrl = "https://api.spotify.com/v1/me/player/currently-playing";
+  public access_token : string | undefined = undefined;
+  private refresh_token : string | undefined;
   
-  private httpOptions = {
-    headers: new HttpHeaders({ 
-      "Accept": "application/json",
-      "Content-Type": "application/json",
-      "Authorization": 'Bearer BQC-2A9l1mb9lJjGx-mmNeB45FSsLRmuwQZm_0Jl6JhVVNAWKAfYKVqMm1EnSKgemm_0zUIaCCuNY958vGYro6i9JA0KQTm-KtkunfDJIgnFYF8z_nSFWR8pZbHUy2q63enmFHu2J2Tei_uQ2gegvXK-KH2--CsimvDxaCKiHSp2jO9gYgWB8flrclJt' 
-    })
-  };
+  private httpOptions = { };
+
+  setAccessToken(access_token: string) {
+    this.access_token = access_token;
+    this.httpOptions = {
+      headers: new HttpHeaders({ 
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${this.access_token}` 
+      })};
+  }
+
+  setRefreshToken(refresh_token: string) {
+    this.refresh_token = refresh_token;
+  }
 
   getData(): Observable<Object> {
+    console.log("access_token: " + this.access_token);
     console.log("getData()");
     return this.http.get<Object>(this.dataUrl, this.httpOptions)
       .pipe(
