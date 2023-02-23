@@ -17,9 +17,13 @@
 
 .album-art img {
     flex: 1;
-    animation: borderCircleAnimation ease 10s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
+    border-radius: 10%;
+    transition: 2s;
+}
+
+.album-art img:hover {
+    flex: 1;
+    border-radius: 50%;
 }
   
 .title {
