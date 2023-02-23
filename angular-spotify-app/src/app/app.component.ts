@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { map, filter, scan } from 'rxjs/operators';
 import { DataService } from './data.service';
 
@@ -10,8 +10,9 @@ import { DataService } from './data.service';
 })
 export class AppComponent  {
   constructor(
+    private dataService: DataService,
     private route: ActivatedRoute,
-    private dataService: DataService) { }
+    private router: Router) { }
   title = 'This Song';
 
   ngOnInit() {

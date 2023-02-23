@@ -8,13 +8,16 @@ import { Data } from './data';
 import { AppComponent } from './app.component';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DataService {
-
   constructor(
     private http: HttpClient
-  ) { }
+  ) { 
+    console.log("DataService CONSTRUCTOR ------------------------------");
+    console.log('DataService constructor called from:');
+    console.trace();
+  }
 
   private dataUrl = "https://api.spotify.com/v1/me/player/currently-playing";
   public access_token : string | undefined = undefined;
@@ -23,6 +26,7 @@ export class DataService {
   private httpOptions = { };
 
   setAccessToken(access_token: string) {
+    console.log("Setting access_token...");
     this.access_token = access_token;
     this.httpOptions = {
       headers: new HttpHeaders({ 

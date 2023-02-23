@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { interval, filter } from 'rxjs';
-
+import { catchError, map, tap } from 'rxjs/operators';
 
 import { Song } from '../song'
 import { DataService } from '../data.service';
@@ -17,17 +17,42 @@ import { AppComponent } from '../app.component';
 export class DataComponent implements OnInit {
   constructor(
     private dataService: DataService,
-    private route: ActivatedRoute) {}
+    private route: ActivatedRoute,
+    private router: Router) {}
 
   data: Object | undefined;
   cleanData: String | undefined;
   song: Song | undefined;
 
-  access_token: string | undefined;
-
   ngOnInit(): void {
     this.getData();
+      // console.log("DataComponent ngOnInit()");
+      // this.route.queryParams
+      //   .pipe(
+      //     filter(params => params['access_token'])
+      //   )
+      //   .pipe(
+      //     filter(params => params['refresh_token'])
+      //   )
+      //   .subscribe(params => {
+      //     console.log(params);
+      //     this.dataService.setAccessToken(params['access_token']);
+      //     this.dataService.setRefreshToken(params['refresh_token']);
+      //     this.getData();
+      //     this.clearPosParam();
+      //   }
+      // );
+  }
 
+  clearPosParam() {
+    this.router.navigate(
+      ['.'], 
+      { relativeTo: this.route, queryParams: {  } }
+    );
+  }
+
+  resetRoute() {
+    window.location.href = "http://192.168.4.158:8888";
   }
 
   getData(): void {
