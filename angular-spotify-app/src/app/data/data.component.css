@@ -2,17 +2,22 @@
     display: inline-flex;
     padding: 0.5em;
     background-color: #222;
-    animation: borderCurveAnimation ease 2s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
+    border-radius: 1em;
+    transition: 2s;
     border-color: black;
     border-style: solid;
+    box-shadow: 5px 5px 5px black;
   }
+
+.song:hover {
+    border-radius: 3em;
+}
 
 .song-info {
     order: 1;
     flex: 90%;
     padding: 2em;
+    right:0em;
 }
 
 .album-art img {

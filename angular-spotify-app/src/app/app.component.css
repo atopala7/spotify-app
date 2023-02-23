@@ -6,6 +6,7 @@
     border-color: black;
     border-style: solid;
     padding: 0.2em;
+    box-shadow: 2px 2px 2px black;
 }
 
 .title {
