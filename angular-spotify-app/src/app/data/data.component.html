@@ -1,3 +1,10 @@
-<div *ngIf="cleanData">
-    <h2>{{cleanData}}</h2>
+<div *ngIf="song" class="song">
+    <div class="song-info">
+        <h2>{{song.name}}</h2>
+        <h3>{{song.artist.artistString}}</h3>
+        <h3>{{song.album.name}}</h3>
+    </div>
+    <div class="album-art">
+        <img src={{song.album.art}} />
+    </div>
 </div>
