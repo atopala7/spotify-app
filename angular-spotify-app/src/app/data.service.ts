@@ -6,6 +6,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 import { Data } from './data';
 import { AppComponent } from './app.component';
+import { Song } from './song';
 
 @Injectable({
   providedIn: 'root',
@@ -21,9 +22,11 @@ export class DataService {
 
   private dataUrl = "https://api.spotify.com/v1/me/player/currently-playing";
   public access_token : string | undefined = undefined;
-  private refresh_token : string | undefined;
+  public refresh_token : string | undefined;
   
   private httpOptions = { };
+
+  public song : Song | undefined = undefined;
 
   setAccessToken(access_token: string) {
     console.log("Setting access_token...");
@@ -34,6 +37,16 @@ export class DataService {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${this.access_token}` 
       })};
+  }
+
+  updateHttpHeaders() {
+    if (this.access_token) {
+      this.httpOptions = {
+        headers: new HttpHeaders({ 
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${this.access_token}`})};
+    }
   }
 
   setRefreshToken(refresh_token: string) {

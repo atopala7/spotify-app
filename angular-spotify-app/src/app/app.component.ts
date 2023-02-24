@@ -29,7 +29,7 @@ export class AppComponent  {
         this.dataService.setRefreshToken(params['refresh_token']);
         console.log("access_token: " + this.dataService.access_token);
         this.router.navigate(
-          ['/data'], 
+          [''], 
           { relativeTo: this.route, queryParams: { } }
           // { relativeTo: this.route, queryParams: { 'access_token': this.dataService.access_token, 'refresh_token': this.dataService.refresh_token } }
         );

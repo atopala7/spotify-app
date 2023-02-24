@@ -1,5 +1,9 @@
-<h1>
-    <span class="titleBox"><a routerLink="/data" class="title">{{title}}</a></span>
-    <span class="titleBox"><a routerLink="/info" class="title">Information</a></span>
-</h1>
-<router-outlet></router-outlet>
+<nav>
+    <a routerLink="/info" routerLinkActive="active" ariaCurrentWhenActive="page">Information</a>
+</nav>
+<div class="container">
+    <app-data></app-data>
+    <div class="box">
+        <router-outlet></router-outlet>
+    </div>
+</div>
