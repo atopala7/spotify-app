@@ -50,7 +50,7 @@ export class InfoComponent implements OnInit {
           console.log(response);
           const contents: string = (response as MyResponse).contents;
           this.text = contents;
-          this.text = this.text.toString();
+          this.text = this.text.toString().trim();
           console.log(this.text);
         }
       )
