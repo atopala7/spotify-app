@@ -24,10 +24,6 @@ export class DataService {
   
   private httpOptions = { };
 
-  private data: Object | undefined;
-  public cleanData: String | undefined;
-  public song$: Observable<Song> | undefined;
-
   getSessionData() {
     let accessToken = sessionStorage.getItem('access_token');
     let refreshToken = sessionStorage.getItem('refresh_token');
@@ -64,6 +60,7 @@ export class DataService {
     }
   }
 
+  // Get the raw data from Spotify, setting the access token from session data in the process
   getSpotifyData(): Observable<Object> {
     console.log("Data Service's getSpotifyData()");
     if (!this.access_token) {
@@ -78,48 +75,49 @@ export class DataService {
       );
   }
 
-  getData(): Observable<Object> {
-    console.log("Data Service's getData()");
-    return this.getSpotifyData()
-      .pipe(map(data => {
-        this.data = data;
-        //console.log("Data: " + JSON.stringify(data));
-        this.cleanData = this.parse(data);
-        //console.log("Clean Data: " + JSON.stringify(this.cleanData));
-        this.song$ = this.extractSong(data);
-        this.song$.subscribe(song => {
-          console.log("Back in Data Service's getData()");
-          console.log("Song: " + JSON.stringify(song));
-        });
-        return this.data;
-      }));
-  }
+  // getData(): Observable<Object> {
+  //   console.log("Data Service's getData()");
+  //   return this.getSpotifyData()
+  //     .pipe(map(data => {
+  //       console.log("Data: " + JSON.stringify(data));
+  //       // this.cleanData = this.parse(data);
+  //       //console.log("Clean Data: " + JSON.stringify(this.cleanData));
+  //       this.song$ = this.extractSong(data);
+  //       this.song$.subscribe(song => {
+  //         console.log("Back in Data Service's getData()");
+  //         console.log("Song: " + JSON.stringify(song));
+  //       });
+  //       return data;
+  //     }));
+  // }
 
   parse(data: Object): String {
     return JSON.stringify(data);
   }
 
-  extractSong(data: any) : Observable<Song> {
+  getSong() : Observable<Song> {
     console.log("Extracting song...");
     //console.log("Data is " + JSON.stringify(data));
-    let song = {
-      id: data.item.id,
-      album: { 
-        name: data.item.album.name, 
-        art: data.item.album.images[1].url 
-      },
-      artist: { 
-        artists: data.item.artists.map((item: { name: any; }) => item.name), 
-        artistString: data.item.artists.map((item: {name: any; }) => item.name).join(", ").toString() 
-      },
-      name: data.item.name,
-      duration: data.item.duration_ms,
-      progress: data.progress_ms
-    };
-    console.log("Song is " + JSON.stringify(song));
-
-    this.song$ = of(song);
-    return this.song$;
+    return this.getSpotifyData()
+      .pipe(map(spotifyData => {
+        let data = spotifyData as any;
+        let song = {
+          id: data.item.id,
+          album: { 
+            name: data.item.album.name, 
+            art: data.item.album.images[1].url 
+          },
+          artist: { 
+            artists: data.item.artists.map((item: { name: any; }) => item.name), 
+            artistString: data.item.artists.map((item: {name: any; }) => item.name).join(", ").toString() 
+          },
+          name: data.item.name,
+          duration: data.item.duration_ms,
+          progress: data.progress_ms
+        };
+        console.log("In getSong() - song is " + JSON.stringify(song));
+        return song;
+      }));
   }
 
   private handleError<T>(operation = "operation", result?: T) {

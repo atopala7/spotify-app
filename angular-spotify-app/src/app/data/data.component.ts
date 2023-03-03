@@ -65,13 +65,18 @@ export class DataComponent implements OnInit {
 
   getData(): void {
     console.log("Data Component's getData()");
-    this.dataService.getData().subscribe(data => {
+    this.dataService.getSong().subscribe(song => {
       console.log("Subscription event in Data Component!");
-      this.dataService.song$
-      ?.subscribe(song => {
-        this.song = song;
-        console.log("Data Component's song: " + JSON.stringify(this.song));
-      });
-    })
+      this.song = song;
+      console.log("Data Component's song: " + JSON.stringify(this.song));
+    });
+    // this.dataService.getData().subscribe(data => {
+    //   console.log("Subscription event in Data Component!");
+    //   this.dataService.song$
+    //   ?.subscribe(song => {
+    //     this.song = song;
+    //     console.log("Data Component's song: " + JSON.stringify(this.song));
+    //   });
+    // })
   }
 }
