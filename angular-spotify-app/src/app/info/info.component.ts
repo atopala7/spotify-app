@@ -23,11 +23,56 @@ export class InfoComponent implements OnInit {
 
   ngOnInit() {
     console.log("Info ngOnInit()");
-    // this.song = this.dataService.song;
-    // console.log("Song: " + this.dataService.song?.name);
+
+    // setInterval(() => {
+    //   this.dataService.getData().subscribe(data => {
+    //   console.log("Subscription event in Info Component!");
+    //   this.dataService.song$?.subscribe(song => {
+    //     this.song = song;
+    //     this.http.get("https://api.allorigins.win/get?url=" + encodeURIComponent("https://en.wikipedia.org/wiki/" + this.song?.artist.artistString.replaceAll(' ', '_')))
+    //     .subscribe(
+    //       (response) => {
+    //         console.log(response);
+    //         const contents: string = (response as MyResponse).contents;
+    //         this.text = contents;
+    //         this.text = this.text.toString().trim();
+    //         //console.log(this.text);
+    //       }
+    //     );
+    //   });
+    // });
+    // }, 1000);
+
+    // this.dataService.getData().subscribe(data => {
+    //   console.log("Subscription event in Info Component!");
+    //   this.dataService.song$?.subscribe(song => {
+    //     this.song = song;
+    //     this.http.get("https://api.allorigins.win/get?url=" + encodeURIComponent("https://en.wikipedia.org/wiki/" + this.song?.artist.artistString.replaceAll(' ', '_')))
+    //     .subscribe(
+    //       (response) => {
+    //         console.log(response);
+    //         const contents: string = (response as MyResponse).contents;
+    //         this.text = contents;
+    //         this.text = this.text.toString().trim();
+    //         //console.log(this.text);
+    //       }
+    //     );
+    //   });
+    // });
 
     this.dataService.song$?.subscribe(song => {
+      console.log("Subscription event in Info Component!");
       this.song = song;
+      this.http.get("https://api.allorigins.win/get?url=" + encodeURIComponent("https://en.wikipedia.org/wiki/" + this.song?.artist.artistString.replaceAll(' ', '_')))
+      .subscribe(
+        (response) => {
+          console.log(response);
+          const contents: string = (response as MyResponse).contents;
+          this.text = contents;
+          this.text = this.text.toString().trim();
+          //console.log(this.text);
+        }
+      );
     });
 
     this.httpOptions = {
@@ -50,15 +95,6 @@ export class InfoComponent implements OnInit {
       
     //this.http.get("https://en.wikipedia.org/wiki/" + this.song?.artist.artistString)
     // this.http.get("https://crossorigin.me/https://rateyourmusic.com/artist/" + this.song?.artist.artistString.replaceAll(' ', '-'))
-    this.http.get("https://api.allorigins.win/get?url=" + encodeURIComponent("https://en.wikipedia.org/wiki/" + this.song?.artist.artistString.replaceAll(' ', '_')))
-      .subscribe(
-        (response) => {
-          console.log(response);
-          const contents: string = (response as MyResponse).contents;
-          this.text = contents;
-          this.text = this.text.toString().trim();
-          //console.log(this.text);
-        }
-      )
+
   }
 }

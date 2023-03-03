@@ -31,6 +31,7 @@ export class DataComponent implements OnInit {
     this.dataService.getSessionData();
     
     if (this.dataService.access_token) {
+      console.log("We have an access token (presumably from session data).");
       this.getData();
     }
 
@@ -67,11 +68,10 @@ export class DataComponent implements OnInit {
     console.log("Data Component's getData()");
     this.dataService.getData().subscribe(data => {
       console.log("Subscription event in Data Component!");
-      this.dataService.song$
-      ?.subscribe(song => {
+      this.dataService.song$?.subscribe(song => {
         this.song = song;
         console.log("Data Component's song: " + JSON.stringify(this.song));
       });
-    })
+    });
   }
 }

@@ -87,6 +87,7 @@ export class DataService {
         this.cleanData = this.parse(data);
         //console.log("Clean Data: " + JSON.stringify(this.cleanData));
         this.song$ = this.extractSong(data);
+        console.log("this.song$ is being changed!");
         this.song$.subscribe(song => {
           console.log("Back in Data Service's getData()");
           console.log("Song: " + JSON.stringify(song));
