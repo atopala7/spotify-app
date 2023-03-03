@@ -21,8 +21,8 @@ export class DataService {
   }
 
   private dataUrl = "https://api.spotify.com/v1/me/player/currently-playing";
-  public access_token : string | undefined = undefined;
-  public refresh_token : string | undefined;
+  public access_token : string | undefined | null = undefined;
+  public refresh_token : string | undefined | null;
   
   private httpOptions = { };
 
@@ -31,6 +31,9 @@ export class DataService {
   setAccessToken(access_token: string) {
     console.log("Setting access_token...");
     this.access_token = access_token;
+
+    sessionStorage.setItem("access_token", this.access_token);
+
     this.httpOptions = {
       headers: new HttpHeaders({ 
         "Accept": "application/json",
@@ -51,9 +54,16 @@ export class DataService {
 
   setRefreshToken(refresh_token: string) {
     this.refresh_token = refresh_token;
+    sessionStorage.setItem("refresh_token", this.refresh_token);
   }
 
   getData(): Observable<Object> {
+    if (!this.access_token) {
+      if (sessionStorage.getItem("access_token")) {
+        this.access_token = sessionStorage.getItem("access_token");
+      }
+    }
+
     console.log("access_token: " + this.access_token);
     console.log("getData()");
     return this.http.get<Object>(this.dataUrl, this.httpOptions)

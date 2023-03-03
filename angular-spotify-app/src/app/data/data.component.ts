@@ -25,8 +25,9 @@ export class DataComponent implements OnInit {
   song: Song | undefined;
 
   ngOnInit(): void {
-  //  this.getData();
+      //this.getData();
       console.log("DataComponent ngOnInit()");
+      
       this.route.queryParams
         .pipe(
           filter(params => params['access_token'])
