@@ -64,36 +64,14 @@ export class DataComponent implements OnInit {
   }
 
   getData(): void {
-    this.dataService.getData()
-      .subscribe(data => {
-        this.data = data;
-        this.cleanData = this.parse(data);
-        this.song = this.extractSong(data);
-        this.dataService.song = this.song;
-        console.log(this.data);
-        console.log(this.song);
+    console.log("Data Component's getData()");
+    this.dataService.getData().subscribe(data => {
+      console.log("Subscription event in Data Component!");
+      this.dataService.song$
+      ?.subscribe(song => {
+        this.song = song;
+        console.log("Data Component's song: " + JSON.stringify(this.song));
       });
-  }
-
-  parse(data: Object): String {
-    return JSON.stringify(data);
-  }
-
-  extractSong(data: any) : Song {
-    this.song = {
-      id: data.item.id,
-      album: { 
-        name: data.item.album.name, 
-        art: data.item.album.images[1].url 
-      },
-      artist: { 
-        artists: data.item.artists.map((item: { name: any; }) => item.name), 
-        artistString: data.item.artists.map((item: {name: any; }) => item.name).join(", ").toString() 
-      },
-      name: data.item.name,
-      duration: data.item.duration_ms,
-      progress: data.progress_ms
-    };
-    return this.song;
+    })
   }
 }

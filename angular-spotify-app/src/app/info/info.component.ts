@@ -23,8 +23,12 @@ export class InfoComponent implements OnInit {
 
   ngOnInit() {
     console.log("Info ngOnInit()");
-    this.song = this.dataService.song;
-    console.log("Song: " + this.dataService.song?.name);
+    // this.song = this.dataService.song;
+    // console.log("Song: " + this.dataService.song?.name);
+
+    this.dataService.song$?.subscribe(song => {
+      this.song = song;
+    });
 
     this.httpOptions = {
       headers: new HttpHeaders({ 
