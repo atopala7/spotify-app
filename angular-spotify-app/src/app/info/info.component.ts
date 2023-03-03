@@ -17,12 +17,14 @@ export class InfoComponent implements OnInit {
     ) {}
 
   song: Song | undefined;
-  text: String = "Hello";
+  text: String = "Loading...";
 
   private httpOptions = { };
 
   ngOnInit() {
+    console.log("Info ngOnInit()");
     this.song = this.dataService.song;
+    console.log("Song: " + this.dataService.song?.name);
 
     this.httpOptions = {
       headers: new HttpHeaders({ 
