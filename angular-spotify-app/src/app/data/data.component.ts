@@ -28,6 +28,10 @@ export class DataComponent implements OnInit {
       //this.getData();
       console.log("DataComponent ngOnInit()");
       
+      if (this.dataService.access_token) {
+        this.getData();
+      }
+      
       this.route.queryParams
         .pipe(
           filter(params => params['access_token'])

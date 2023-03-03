@@ -16,6 +16,13 @@ export class AppComponent  {
   title = 'This Song';
 
   ngOnInit() {
+    console.log("AppComponent ngOnInit()");
+    let accessToken = sessionStorage.getItem('access_token');
+    if (accessToken) {
+      console.log("accessToken: " + accessToken);
+      this.dataService.setAccessToken(accessToken);
+    }
+
     this.route.queryParams
       .pipe(
         filter(params => params['access_token'])
