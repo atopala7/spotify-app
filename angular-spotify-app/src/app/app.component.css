@@ -52,6 +52,13 @@ a {
     text-decoration: none;
 }
 
+.active {
+    color: #FFFF82;
+    /* font-family: Arial, Helvetica, sans-serif; */
+    font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+    font-weight: bold;
+}
+
 @keyframes borderCurveAnimation {
     0% {
         border-radius: 0em;
