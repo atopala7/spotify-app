@@ -15,31 +15,41 @@ export class DataService {
   constructor(
     private http: HttpClient
   ) { 
-    console.log("DataService CONSTRUCTOR ------------------------------");
-    console.log('DataService constructor called from:');
-    console.trace();
+    console.log("DataService CONSTRUCTOR");
   }
 
   private dataUrl = "https://api.spotify.com/v1/me/player/currently-playing";
   public access_token : string | undefined | null = undefined;
-  public refresh_token : string | undefined | null;
+  public refresh_token : string | undefined | null = undefined;
   
   private httpOptions = { };
 
   public song : Song | undefined = undefined;
 
+  getSessionData() {
+    let accessToken = sessionStorage.getItem('access_token');
+    let refreshToken = sessionStorage.getItem('refresh_token');
+    if (accessToken) {
+      console.log("Session access_token: " + accessToken);
+      this.setAccessToken(accessToken);
+    }
+    if (refreshToken) {
+      console.log("Session refresh_token: " + refreshToken);
+      this.setRefreshToken(refreshToken);
+    }
+  }
+
   setAccessToken(access_token: string) {
     console.log("Setting access_token...");
-    this.access_token = access_token;
-
+    this.access_token = access_token
     sessionStorage.setItem("access_token", this.access_token);
+    this.updateHttpHeaders();
+  }
 
-    this.httpOptions = {
-      headers: new HttpHeaders({ 
-        "Accept": "application/json",
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.access_token}` 
-      })};
+  setRefreshToken(refresh_token: string) {
+    console.log("Setting refresh_token...");
+    this.refresh_token = refresh_token;
+    sessionStorage.setItem("refresh_token", this.refresh_token);
   }
 
   updateHttpHeaders() {
@@ -52,11 +62,6 @@ export class DataService {
     }
   }
 
-  setRefreshToken(refresh_token: string) {
-    this.refresh_token = refresh_token;
-    sessionStorage.setItem("refresh_token", this.refresh_token);
-  }
-
   getData(): Observable<Object> {
     if (!this.access_token) {
       if (sessionStorage.getItem("access_token")) {
@@ -64,8 +69,8 @@ export class DataService {
       }
     }
 
-    console.log("access_token: " + this.access_token);
     console.log("getData()");
+
     return this.http.get<Object>(this.dataUrl, this.httpOptions)
       .pipe(
         catchError(this.handleError<Object>('getData'))
@@ -74,6 +79,7 @@ export class DataService {
 
   private handleError<T>(operation = "operation", result?: T) {
     return (error: any): Observable<T> => {
+      console.log("An error has occurred!");
       // TODO: send the error to remote logging infrastructure
     console.error(error); // log to console instead
 

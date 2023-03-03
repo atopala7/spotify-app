@@ -25,40 +25,42 @@ export class DataComponent implements OnInit {
   song: Song | undefined;
 
   ngOnInit(): void {
-      //this.getData();
-      console.log("DataComponent ngOnInit()");
+    console.log("DataComponent ngOnInit()");
+
+    // Get session data if it exists; this sets the access and refresh tokens if they've been previously determined
+    this.dataService.getSessionData();
+    
+    if (this.dataService.access_token) {
+      this.getData();
+    }
+
+    // If query parameters exist for the tokens, overwrite session data
+    this.route.queryParams
+    .pipe(
+      filter(params => params['access_token'])
+    )
+    .pipe(
+      filter(params => params['refresh_token'])
+    )
+    .subscribe(params => {
+        this.dataService.setAccessToken(params['access_token']);
+        this.dataService.setRefreshToken(params['refresh_token']);
+        console.log("--------------------QUERY PARAMETERS---------------------------");
+        console.log(params);
+        console.log("access_token: " + this.dataService.access_token);
+        console.log("---------------------------------------------------------------");
       
-      if (this.dataService.access_token) {
+        // Get the initial data; this occurs when the page is reached with query parameters
         this.getData();
+
+        // Get rid of the parameters in the URL
+        this.router.navigate(
+          [''], 
+          { relativeTo: this.route, queryParams: { } }
+          // { relativeTo: this.route, queryParams: { 'access_token': this.dataService.access_token, 'refresh_token': this.dataService.refresh_token } }
+        );
       }
-      
-      this.route.queryParams
-        .pipe(
-          filter(params => params['access_token'])
-        )
-        .pipe(
-          filter(params => params['refresh_token'])
-        )
-        .subscribe(params => {
-          console.log(params);
-          window.alert("Subscription event here!");
-          this.dataService.setAccessToken(params['access_token']);
-          //this.dataService.setRefreshToken(params['refresh_token']);
-          this.getData();
-          //this.clearPosParam();
-        }
-      );
-  }
-
-  clearPosParam() {
-    this.router.navigate(
-      ['.'], 
-      { relativeTo: this.route, queryParams: {  } }
     );
-  }
-
-  resetRoute() {
-    window.location.href = "http://192.168.4.158:8888";
   }
 
   getData(): void {
