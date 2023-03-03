@@ -17,7 +17,7 @@ export class InfoComponent implements OnInit {
     ) {}
 
   song: Song | undefined;
-  text: String = "Loading...";
+  text: String = "Data undefined.";
 
   private httpOptions = { };
 
@@ -60,19 +60,40 @@ export class InfoComponent implements OnInit {
     //   });
     // });
 
+    // Subscribe to DataService's song$ Observable
     this.dataService.song$?.subscribe(song => {
       console.log("Subscription event in Info Component!");
+      this.text = `Loading data for ${song.artist.artistString}...`;
       this.song = song;
-      this.http.get("https://api.allorigins.win/get?url=" + encodeURIComponent("https://en.wikipedia.org/wiki/" + this.song?.artist.artistString.replaceAll(' ', '_')))
-      .subscribe(
-        (response) => {
-          console.log(response);
-          const contents: string = (response as MyResponse).contents;
-          this.text = contents;
-          this.text = this.text.toString().trim();
-          //console.log(this.text);
-        }
-      );
+      // If InfoComponent is initialized before any data is received by DataService (e.g. through a page refresh),
+        // InfoComponent will have a subscription to DataService's songData and will receive emitted events whenever the song changes
+      // If it's initialized afterwards (i.e. by clicking on the Information tab after the page has loaded), it must subscribe again,
+        // since it will have subscribed to a version of song$ that will not emit further events
+      this.dataService.song$ = this.dataService.getSongData().asObservable();
+      this.dataService.song$.subscribe(song => {
+          console.log("Subscription event in Info Component!");
+          this.text = `Loading data for ${song.artist.artistString}...`;
+          this.song = song;
+          this.http.get("https://api.allorigins.win/get?url=" + encodeURIComponent("https://en.wikipedia.org/wiki/" + this.song?.artist.artistString.replaceAll(' ', '_')))
+          .subscribe(
+            (response) => {
+              console.log(response);
+              const contents: string = (response as MyResponse).contents;
+              this.text = contents;
+              this.text = this.text.toString().trim();
+              //console.log(this.text);
+            }
+          )});
+          this.http.get("https://api.allorigins.win/get?url=" + encodeURIComponent("https://en.wikipedia.org/wiki/" + this.song?.artist.artistString.replaceAll(' ', '_')))
+          .subscribe(
+            (response) => {
+              console.log(response);
+              const contents: string = (response as MyResponse).contents;
+              this.text = contents;
+              this.text = this.text.toString().trim();
+              //console.log(this.text);
+            }
+          );
     });
 
     this.httpOptions = {
@@ -91,6 +112,14 @@ export class InfoComponent implements OnInit {
           response_time: number;
           content_length: number;
         };
+      }
+
+      interface WikiData {
+        parse: {
+          contents: string;
+          title: string;
+          images: string[];
+        }
       }
       
     //this.http.get("https://en.wikipedia.org/wiki/" + this.song?.artist.artistString)

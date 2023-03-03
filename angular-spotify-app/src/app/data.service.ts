@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { Data } from './data';
@@ -26,7 +26,9 @@ export class DataService {
 
   private data: Object | undefined;
   public cleanData: String | undefined;
-  public song$: Observable<Song> | undefined;
+
+  private songData = new Subject<Song>();
+  public song$: Observable<Song> | undefined = this.songData.asObservable();
 
   getSessionData() {
     let accessToken = sessionStorage.getItem('access_token');
@@ -39,6 +41,15 @@ export class DataService {
       console.log("Session access_token: " + refreshToken);
       this.setRefreshToken(refreshToken);
     }
+  }
+
+  public getSongData(): Subject<Song> {
+    return this.songData;
+  }
+
+  public refresh(): void {
+    this.song$ = this.songData.asObservable();
+    this.getData();
   }
 
   setAccessToken(access_token: string) {
@@ -119,6 +130,7 @@ export class DataService {
     };
     console.log("Song is " + JSON.stringify(song));
 
+    this.songData.next(song);
     this.song$ = of(song);
     return this.song$;
   }

@@ -18,6 +18,16 @@
     overflow:auto;
 }
 
+nav {
+    padding-left: 2em;
+}
+
+nav a {
+    border: solid black 2px;
+    border-radius: 5px;
+    background-color: #222;
+}
+
 .container .box:hover {
     background: #222;
     box-shadow: 50px 50px 50px black;
@@ -57,6 +67,10 @@ a {
     /* font-family: Arial, Helvetica, sans-serif; */
     font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
     font-weight: bold;
+    pointer-events: none;
+    background-color: none;
+    border: none;
+    padding: 4px;
 }
 
 @keyframes borderCurveAnimation {
