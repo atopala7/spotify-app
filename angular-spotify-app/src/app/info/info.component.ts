@@ -19,6 +19,15 @@ export class InfoComponent implements OnInit {
   song: Song | undefined;
   text: String = "Data undefined.";
 
+  title: String = "Undefined";
+  pageid: number = 0;
+  images: string[] = [];
+  content: string = "Undefined.";
+  sections: {
+      index: string,
+      line: string
+  }[] = [];
+
   private httpOptions = { };
 
   ngOnInit() {
@@ -74,26 +83,44 @@ export class InfoComponent implements OnInit {
           console.log("Subscription event in Info Component!");
           this.text = `Loading data for ${song.artist.artistString}...`;
           this.song = song;
-          this.http.get("https://api.allorigins.win/get?url=" + encodeURIComponent("https://en.wikipedia.org/wiki/" + this.song?.artist.artistString.replaceAll(' ', '_')))
-          .subscribe(
-            (response) => {
-              console.log(response);
-              const contents: string = (response as MyResponse).contents;
-              this.text = contents;
-              this.text = this.text.toString().trim();
-              //console.log(this.text);
-            }
-          )});
-          this.http.get("https://api.allorigins.win/get?url=" + encodeURIComponent("https://en.wikipedia.org/wiki/" + this.song?.artist.artistString.replaceAll(' ', '_')))
-          .subscribe(
-            (response) => {
-              console.log(response);
-              const contents: string = (response as MyResponse).contents;
-              this.text = contents;
-              this.text = this.text.toString().trim();
-              //console.log(this.text);
-            }
-          );
+          this.http.get(`https://en.wikipedia.org/w/api.php?action=parse&format=json&origin=*&page=${this.song?.artist.artistString}`)
+            .subscribe(
+              (response) => {
+                console.log(response);
+                const contents: string = (response as WikiData).parse.title;
+                console.log(contents);
+
+                let wiki : WikiData = response as WikiData;
+                console.log(wiki.parse);
+                this.title = wiki.parse.title;
+                this.pageid = wiki.parse.pageid;
+                this.images = wiki.parse.images;
+                this.content = wiki.parse.text["*"];
+                this.content = this.content.replaceAll('a href="/wiki', 'a href="https://wikipedia.org/wiki');
+                this.text = `<h1>${this.title}</h1><div>${this.content}</div>`;
+                //this.text = this.text.toString().trim();
+                //console.log(this.text);
+              }
+            )});
+      this.http.get(`https://en.wikipedia.org/w/api.php?action=parse&format=json&origin=*&page=${this.song?.artist.artistString}`)
+      .subscribe(
+        (response) => {
+          console.log(response);
+          const contents: string = (response as WikiData).parse.title;
+          console.log(contents);
+
+          let wiki : WikiData = response as WikiData;
+          console.log(wiki.parse);
+          this.title = wiki.parse.title;
+          this.pageid = wiki.parse.pageid;
+          this.images = wiki.parse.images;
+          this.content = wiki.parse.text["*"];
+          this.content = this.content.replaceAll('a href="/wiki', 'a href="https://wikipedia.org/wiki');
+          this.text = `<h1>${this.title}</h1><div>${this.content}</div>`;
+          //this.text = this.text.toString().trim();
+          //console.log(this.text);
+        }
+      );
     });
 
     this.httpOptions = {
@@ -116,9 +143,16 @@ export class InfoComponent implements OnInit {
 
       interface WikiData {
         parse: {
-          contents: string;
           title: string;
+          pageid: number;
           images: string[];
+          text: {
+            "*": string;
+          };
+          sections: [
+            index: string,
+            line: string
+          ];
         }
       }
       
