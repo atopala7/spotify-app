@@ -1,9 +1,9 @@
 .container { 
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     height: 90vh;
-    flex-wrap: wrap;
+
 } 
 
 .container .box {
@@ -13,7 +13,7 @@
     display: inline-flex;
     background-color: #222;
     transition: 1s;
-    width: 40vw;
+    width: 90vw;
     height: 80vh;
     overflow:auto;
 }
