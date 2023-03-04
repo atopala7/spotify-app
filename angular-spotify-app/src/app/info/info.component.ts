@@ -122,10 +122,10 @@ export class InfoComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.refreshSubscription.unsubscribe();
-    this.refreshDataSubscription.unsubscribe();
-    this.clickInfoSubscription.unsubscribe();
-    this.clickInfoDataSubscription.unsubscribe();
+    if (this.refreshSubscription) this.refreshSubscription.unsubscribe();
+    if (this.refreshDataSubscription) this.refreshDataSubscription.unsubscribe();
+    if (this.clickInfoSubscription) this.clickInfoSubscription.unsubscribe();
+    if (this.clickInfoDataSubscription) this.clickInfoDataSubscription.unsubscribe();
   }
 
   parseWikiData(response: Object) : void {
