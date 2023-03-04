@@ -35,7 +35,6 @@ nav a {
     transition: box-shadow 5s, border-radius 1s;
     border-radius: 5px;
     transition: 5s;
-    transform: translate(-0.1em, -0.1em);
 }
 
 .titleBox {
