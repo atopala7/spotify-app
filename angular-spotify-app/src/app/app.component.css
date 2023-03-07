@@ -13,7 +13,7 @@
     display: inline-flex;
     background-color: #222;
     transition: 1s;
-    width: 90vw;
+    width: 100%;
     height: 80vh;
     overflow:auto;
 }
@@ -23,7 +23,7 @@ nav {
 }
 
 nav a {
-    border: solid black 2px;
+    /* border: solid black 2px; */
     border-radius: 5px;
     background-color: #222;
 }

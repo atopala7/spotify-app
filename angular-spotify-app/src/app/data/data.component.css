@@ -1,11 +1,13 @@
 .song {
     display: inline-flex;
-    padding: 0.5em;
+    padding-left: 0.5em;
+    margin-bottom: 0.5em;
     background-color: #222;
     border-radius: 1em;
     transition: 2s;
-    border-color: black;
-    border-style: solid;
+    width: 100%;
+    /* border-color: black;
+    border-style: solid; */
     box-shadow: 5px 5px 5px black;
   }
 
