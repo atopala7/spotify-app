@@ -7,7 +7,6 @@
 } 
 
 .container .box {
-    padding: .5em;
     background: #222;
     box-shadow: 1px 1px 1px black;
     display: inline-flex;
