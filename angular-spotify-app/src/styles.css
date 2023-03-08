@@ -24,7 +24,7 @@ h2, h3 {
 }
 body {
     background-color: #333;
-    margin: 2em;
+    margin: 1em;
 }
 body, input[type="text"], button {
     color: #FFFF82;
@@ -55,4 +55,11 @@ button:disabled {
 /* everywhere else */
 * {
 font-family: Arial, Helvetica, sans-serif;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        margin: 0;
+        padding: 0;
+    }
 }

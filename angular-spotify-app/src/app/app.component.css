@@ -1,17 +1,23 @@
 .container { 
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
     justify-content: space-between;
     height: 90vh;
+    width: 100%;
+}
+
+.top {
+    display: inline-flex;
+    flex-direction: column;
 }
 
 .container .box {
     background: #222;
     box-shadow: 1px 1px 1px black;
-    display: inline-flex;
     background-color: #222;
     transition: 1s;
     width: 100%;
+    flex: 1;
     overflow:auto;
 }
 
@@ -22,7 +28,6 @@ nav {
 nav a {
     /* border: solid black 2px; */
     border-radius: 5px;
-
     background-color: #222;
 }
 
@@ -84,4 +89,37 @@ a {
     100% {
         opacity: 1;
      }
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    nav {
+        padding-left: 0px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .top {
+        display: inline-flex;
+        flex-direction: row-reverse;
+        height: 100%;
+    }
+
+    .top * {
+        height: 100%;
+        text-align: center;
+        padding-top: 1em;
+    }
+
+    .container {
+        height: 100%;
+    }
+
+    .container .box { 
+        overflow-x: hidden;
+    }
 }

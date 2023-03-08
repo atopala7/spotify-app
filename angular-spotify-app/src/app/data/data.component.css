@@ -63,3 +63,25 @@
         opacity: 1;
      }
 }
+
+@media only screen and (max-width: 600px) {
+    .song {
+        display: grid;
+    }
+    .song-info {
+        grid-column: 1;
+        grid-row: 1;
+        text-align: center;
+        vertical-align: center;
+    }
+    .song-info * {
+        text-shadow: -1px 1px 0 #000,
+                          1px 1px 0 #000,
+                         1px -1px 0 #000,
+                        -1px -1px 0 #000;
+    }
+    .album-art {
+        grid-column: 1;
+        grid-row: 1;
+    }
+}
