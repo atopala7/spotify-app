@@ -5,11 +5,15 @@
     border-radius: 1em;
     transition: 2s;
     width: 100%;
-  }
-
-.song:hover {
-    border-radius: 1em 3em 3em 1em;
 }
+
+.album-art {
+    max-height: 300px;
+}
+
+/* .song:hover {
+    border-radius: 1em 3em 3em 1em;
+} */
 
 .song-info {
     order: 1;
