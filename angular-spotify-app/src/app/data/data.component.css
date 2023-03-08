@@ -5,30 +5,24 @@
     border-radius: 1em;
     transition: 2s;
     width: 100%;
-    /* border-color: black;
-    border-style: solid; */
-    box-shadow: 5px 5px 5px black;
   }
 
 .song:hover {
-    border-radius: 3em;
+    border-radius: 1em 3em 3em 1em;
 }
 
 .song-info {
     order: 1;
-    flex: 90%;
     padding: 2em;
     right:0em;
 }
 
 .album-art img {
-    flex: 1;
-    border-radius: 10%;
+    border-radius: 1em;
     transition: 2s;
 }
 
 .album-art img:hover {
-    flex: 1;
     border-radius: 50%;
 }
   
