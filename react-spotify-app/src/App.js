@@ -1,24 +1,14 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { accessToken, logout } from './spotify';
 
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const [token, setToken] = useState(null);
+
   useEffect(() => {
-    const querystring = window.location.search;
-    const urlParams = new URLSearchParams(querystring);
-    const accessToken = urlParams.get('access_token');
-    const refreshToken = urlParams.get('refresh_token');
-
-    console.log("Access token: " + accessToken);
-    console.log("Refresh token: " + refreshToken);
-
-    if (refreshToken) {
-      fetch(`/refresh_token?refresh_token=${refreshToken}`)
-        .then(res => res.json())
-        .then(data => console.log(data))
-        .catch(err => console.log(err));
-    }
+    setToken(accessToken);
   }, []);
 
   return (
@@ -28,13 +18,21 @@ function App() {
         <p>
           Spotify App
         </p>
-        <a
+        {!token ? (
+          <a
           className="App-link"
           href="http://localhost:8888/login"
           rel="noopener noreferrer"
         >
           Log in to Spotify
         </a>
+        ) : (
+          // Create a fragment, as React components must return a single element (or multiple elements wrapped inside one parent)
+          <>
+            <h1>Logged in!</h1>
+            <button onClick={logout}>Log Out</button>
+          </>
+        )}
       </header>
     </div>
   );
