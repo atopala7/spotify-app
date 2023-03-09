@@ -111,6 +111,10 @@ const refreshToken = async () => {
     }
 }
 
+/**
+ * Logs the user out of Spotify and clears corresponding data in local storage
+ * @returns {void}
+ */
 export const logout = () => {
     // Clear all local storage items
     for (const property in LOCALSTORAGE_KEYS) {
@@ -123,4 +127,19 @@ export const logout = () => {
     window.location = window.location.origin;
 };
 
+/**
+ * Get the current user's Spotify profile
+ * https://developer.spotify.com/documentation/web-api/reference/#/operations/get-current-users-profile
+ * @returns {Promise}
+ */
+export const getCurrentUserProfile = () => axios.get('/me');
+
 export const accessToken = getAccessToken();
+
+/**
+ * Axios global request headers
+ * https://github.com/axios/axios#global-axios-defaults
+ */
+axios.defaults.baseURL = 'https://api.spotify.com/v1';
+axios.defaults.headers['Authorization'] = `Bearer ${accessToken}`;
+axios.defaults.headers['Content-Type'] = 'application/json';
