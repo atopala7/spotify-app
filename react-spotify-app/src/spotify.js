@@ -13,20 +13,6 @@ const LOCALSTORAGE_VALUES = {
     timestamp: window.localStorage.getItem(LOCALSTORAGE_KEYS.timestamp),
 };
 
-// const SESSIONSTORAGE_KEYS = {
-//     accessToken: 'spotify_access_token',
-//     refreshToken: 'spotify_refresh_token',
-//     expireTime: 'spotify_token_expire_time',
-//     timestamp: 'spotify_token_timestamp',
-// }
-// const SESSIONSTORAGE_VALUES = {
-//     accessToken: window.sessionStorage.getItem(SESSIONSTORAGE_KEYS.accessToken),
-//     refreshToken: window.sessionStorage.getItem(SESSIONSTORAGE_KEYS.refreshToken),
-//     expireTime: window.sessionStorage.getItem(SESSIONSTORAGE_KEYS.expireTime),
-//     timestamp: window.sessionStorage.getItem(SESSIONSTORAGE_KEYS.timestamp),
-// }
-
-
 /**
  * Retrieves the Spotify access token from local storage or from the URL query params
  * @returns {string} A Spotify access token
