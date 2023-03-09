@@ -118,7 +118,7 @@ app.get("/refresh_token", (req, res) => {
 			res.send(response.data);
 		})
 		.catch(error => {
-			res.send(response.error);
+			res.send(error);
 		});
 });
 
