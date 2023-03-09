@@ -11,7 +11,6 @@ const app = express();
 const port = 8888;
 
 const angularURI = REDIRECT_URI.substring(0, REDIRECT_URI.indexOf(":8888"));
-const reactURI = REDIRECT_URI.substring(0, REDIRECT_URI.indexOf(":8888"));
 
 const querystring = require("querystring");
 
@@ -86,9 +85,7 @@ app.get("/callback", (req, res) => {
 				});
 
 				// Redirect the user to the Angular app, with the access and refresh tokens as parameters
-				// res.redirect(`${angularURI}:4200/?${queryParams}`);
-				// Redirect the user to the React app, with the access and refresh tokens as parameters
-				res.redirect(`${reactURI}:3000/?${queryParams}`);
+				res.redirect(`${angularURI}:4200/?${queryParams}`);
 			}
 			else {
 				res.redirect(`/?${querystring.stringify({ error: 'invalid_token' })}`);
