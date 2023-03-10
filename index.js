@@ -40,7 +40,10 @@ app.get("/login", (req, res) => {
 	console.log("state: " + state);
 	res.cookie(stateKey, state);
 
-	const scope = "user-read-currently-playing";
+	// The scopes required for the requests
+	const scope = [
+		"user-read-currently-playing",
+	].join(' ');
 
 	const queryParams = querystring.stringify({
 		client_id: CLIENT_ID,
