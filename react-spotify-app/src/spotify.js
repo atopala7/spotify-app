@@ -87,7 +87,8 @@ const refreshToken = async () => {
     try {
         // Log out if there's no refresh token stored
         if (!LOCALSTORAGE_VALUES.refreshToken ||
-            LOCALSTORAGE_VALUES.refreshToken === 'undefined'
+            LOCALSTORAGE_VALUES.refreshToken === 'undefined' ||
+            (Date.now() - Number(LOCALSTORAGE_VALUES.timestamp) / 1000) < 1000
             // TODO: Check for infinite refresh loop
         ) {
             console.error("No refresh token available!");
