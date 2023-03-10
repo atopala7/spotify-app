@@ -1,4 +1,10 @@
 import { useState, useEffect } from 'react';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from 'react-router-dom';
+
 import { accessToken, getCurrentUserProfile, logout } from './spotify';
 import { catchErrors } from './utils';
 
@@ -36,24 +42,42 @@ function App() {
           Log in to Spotify
         </a>
         ) : (
-          // Create a fragment, as React components must return a single element (or multiple elements wrapped inside one parent)
-          <>
-            <h1>Logged in!</h1>
-            <button onClick={logout}>Log Out</button>
-
-            {profile && (
-              <div>
-                <h1>{profile.display_name}</h1>
-                {profile.images.length && profile.images[0].url && (
-                  <img src={profile.images[0].url} alt="Avatar" />
-                )}
-              </div>
-            )}
-          </>
+          <Router>
+            <Routes>
+              <Route path="/" element={<Root />} />    
+              <Route path="/information" element={<Information />} />
+            </Routes>
+          </Router>
         )}
       </header>
     </div>
   );
+
+  function Root() {
+    return (
+      <>
+        <h1>Logged in!</h1>
+        <button onClick={logout}>Log Out</button>
+  
+        {profile && (
+          <div>
+            <h1>{profile.display_name}</h1>
+            {profile.images.length && profile.images[0].url && (
+              <img src={profile.images[0].url} alt="Avatar" />
+            )}
+          </div>
+        )}
+      </>
+    )
+  }
+
+  function Information() {
+    return (
+      <>
+        <h1>Information</h1>
+      </>
+    )
+  }
 }
 
 export default App;
