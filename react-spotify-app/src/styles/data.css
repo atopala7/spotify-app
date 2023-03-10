@@ -1,0 +1,41 @@
+.data {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100vw;
+    background-color: #222;
+    transition: 2s;
+}
+
+img.data-image {
+    /* width: 20%; */
+    max-width: 250px;
+    min-width: 120px;
+    border-radius: 10%;
+    transition: 0.5s;
+}
+
+img.data-image:hover {
+    box-shadow: 0 4px 10px rgb(0 0 0 / 100%);
+    border-radius: 50%;
+}
+
+.data-info h1 {
+    text-shadow: 0 4px 10px rgb(0 0 0 / 100%);
+    transition: 0.5s;
+}
+
+h2 {
+    text-shadow: 0 4px 10px rgb(0 0 0 / 100%);
+    transition: 0.5s;
+}
+
+@media only screen and (max-width: 600px) {
+    .data-info h1 {
+        text-shadow: 0 4px 10px rgb(0 0 0 / 100%);
+        transition: 0.5s;
+        font-weight: 400;
+        font-size: 200%;
+    }
+}
