@@ -14,13 +14,15 @@ import { catchErrors } from '../utils';
 
 const Root = () => {
     const [data, setData] = useState(null);
+    const [status, setStatus] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
             const currentlyPlaying = await getCurrentlyPlaying();
             setData(currentlyPlaying.data);
+            setStatus(currentlyPlaying.status);
         };
-        console.log(data);
+        
         catchErrors(fetchData());
     }, []);
     
@@ -43,8 +45,9 @@ const Root = () => {
             </header>
             <Data song = {data} />
         </>
-        )
-        || (
+        ) || status == 204 && (
+            <p>No song is currently playing.</p>
+        ) || (
             <p>Loading...</p>
         )}
         </>
