@@ -11,6 +11,8 @@ import {
 import { accessToken, getCurrentUserProfile, logout } from './spotify';
 import { catchErrors } from './utils';
 
+import { Login } from './pages';
+
 import logo from './logo.svg';
 import './App.css';
 
@@ -34,19 +36,8 @@ function App() {
       <header className="App-header">
         {!token ? (
           <>
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>
-              Spotify App
-            </p>
-            <a
-            className="Login-button"
-            // className="App-link"
-            href="http://192.168.4.158:8888/login"
-            rel="noopener noreferrer"
-          >
-            Log in to Spotify
-          </a>
-        </>
+            <Login />
+          </>
         ) : (
           <>
           <Router>
