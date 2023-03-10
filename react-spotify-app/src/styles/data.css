@@ -5,11 +5,10 @@
     position: relative;
     width: 100vw;
     background-color: #222;
-    transition: 2s;
+    transition: 1s;
 }
 
 img.data-image {
-    /* width: 20%; */
     max-width: 250px;
     min-width: 120px;
     border-radius: 10%;
@@ -37,5 +36,12 @@ h2 {
         transition: 0.5s;
         font-weight: 400;
         font-size: 200%;
+    }
+
+    img.data-image {
+        max-width: 150px;
+        min-width: 120px;
+        border-radius: 10%;
+        transition: 0.5s;
     }
 }
