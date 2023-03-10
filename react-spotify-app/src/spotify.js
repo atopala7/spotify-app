@@ -134,6 +134,14 @@ export const logout = () => {
  */
 export const getCurrentUserProfile = () => axios.get('/me');
 
+/**
+ * Get the song that's currently playing
+ * @returns {Promise}
+ */
+export const getCurrentlyPlaying = () => {
+    return axios.get('/me/player/currently-playing');
+}
+
 export const accessToken = getAccessToken();
 
 /**

@@ -9,7 +9,7 @@ import {
 
 import { accessToken, logout } from './spotify';
 import { catchErrors } from './utils';
-import { Login, Data } from './pages';
+import { Login, Data, Profile } from './pages';
 
 import './App.css';
 
@@ -34,6 +34,7 @@ function App() {
                 <Route path="/data" element={<Data />} />
                 <Route path="/information" element={<Information />} />
                 <Route path="/lyrics" element={<Lyrics />} />
+                <Route path="/profile" element={<Profile />} />
                 <Route path="/logout" element={<Logout />} />
               </Route>
             </Routes>
@@ -51,6 +52,7 @@ function App() {
             <NavLink to="/" className="Styled-button">Home</NavLink>
             <NavLink to="/information" className="Styled-button">Information</NavLink>
             <NavLink to="/lyrics" className="Styled-button">Lyrics</NavLink>
+            <NavLink to="/profile" className="Styled-button">Profile</NavLink>
             <NavLink to="/logout" className="Styled-button Logout-button">Log Out</NavLink>
           </nav>
         </header>

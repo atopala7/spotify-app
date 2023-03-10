@@ -1,15 +1,15 @@
 import { React, useState, useEffect } from 'react';
 
-import { getCurrentUserProfile } from '../spotify';
+import { getCurrentlyPlaying } from '../spotify';
 import { catchErrors } from '../utils';
 
 const Data = () => {
-    const [profile, setProfile] = useState(null);
+    const [song, setSong] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
-            const { data } = await getCurrentUserProfile();
-            setProfile(data);
+            const currentlyPlaying = await getCurrentlyPlaying();
+            setSong(currentlyPlaying.data);
         };
 
         catchErrors(fetchData());
@@ -17,13 +17,8 @@ const Data = () => {
 
     return (
         <>
-            {profile && (
-                <div>
-                <h1>{profile.display_name}</h1>
-                {profile.images.length && profile.images[0].url && (
-                    <img src={profile.images[0].url} alt="Avatar"/>
-                )}
-                </div>
+            {song && console.log(
+                song.item.artists[0].name
             )}
         </>
     )
