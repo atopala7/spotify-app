@@ -5,7 +5,7 @@ import {
   Routes,
   Route,
   Outlet,
-  Link,
+  NavLink,
 } from 'react-router-dom';
 
 import { accessToken, getCurrentUserProfile, logout } from './spotify';
@@ -54,6 +54,7 @@ function App() {
               <Route path="/" element={<Root />}>    
                 <Route path="/data" element={<Data />} />
                 <Route path="/information" element={<Information />} />
+                <Route path="/lyrics" element={<Lyrics />} />
                 <Route path="/logout" element={<Logout />} />
               </Route>
             </Routes>
@@ -78,10 +79,11 @@ function App() {
         )}
 
         <nav>
-          <Link to="/">Home</Link>
-          <Link to="/data">Data</Link>
-          <Link to="/information">Information</Link>
-          <Link to="/logout">Log Out</Link>
+          <NavLink to="/" className="Styled-button">Home</NavLink>
+          <NavLink to="/data" className="Styled-button">Data</NavLink>
+          <NavLink to="/information" className="Styled-button">Information</NavLink>
+          <NavLink to="/lyrics" className="Styled-button">Lyrics</NavLink>
+          <NavLink to="/logout" className="Styled-button Logout-button">Log Out</NavLink>
         </nav>
 
         <Outlet />
@@ -101,6 +103,14 @@ function App() {
     return (
       <>
         <h1>Information</h1>
+      </>
+    )
+  }
+
+  function Lyrics() {
+    return (
+      <>
+        <h1>Lyrics</h1>
       </>
     )
   }
