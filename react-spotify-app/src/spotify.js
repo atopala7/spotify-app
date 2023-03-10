@@ -29,6 +29,7 @@ const getAccessToken = () => {
 
     // If there's an error or if the access token in storage has expired, refresh the token
     if (hasError || hasTokenExpired() || LOCALSTORAGE_VALUES.accessToken === 'undefined') {
+        console.log("Getting a refresh token...");
         refreshToken();
     }
 
@@ -89,7 +90,6 @@ const refreshToken = async () => {
         if (!LOCALSTORAGE_VALUES.refreshToken ||
             LOCALSTORAGE_VALUES.refreshToken === 'undefined' ||
             (Date.now() - Number(LOCALSTORAGE_VALUES.timestamp) / 1000) < 1000
-            // TODO: Check for infinite refresh loop
         ) {
             console.error("No refresh token available!");
             logout();
@@ -102,8 +102,9 @@ const refreshToken = async () => {
         const { data } = await axios.get(`/refresh_token?refresh_token=${LOCALSTORAGE_VALUES.refreshToken}`);
 
         // Update values in local storage
-        window.localStorage.setItem(LOCALSTORAGE_KEYS.accessToken, data.accessToken);
+        window.localStorage.setItem(LOCALSTORAGE_KEYS.accessToken, data.access_token);
         window.localStorage.setItem(LOCALSTORAGE_KEYS.timestamp, Date.now());
+        console.log("Tokens saved in local storage.");
 
         // Reload the page so it reflects the changes to local storage
         window.location.reload();

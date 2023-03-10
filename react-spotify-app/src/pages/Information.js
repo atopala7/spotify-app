@@ -1,4 +1,5 @@
 import { React, useState, useEffect } from 'react';
+import { useLocation } from "react-router-dom";
 
 import { getCurrentlyPlaying } from '../spotify';
 import { getArtistInformation } from '../wikipedia';
@@ -6,16 +7,26 @@ import { catchErrors } from '../utils';
 
 import '../styles/information.css'
 
-const Information = () => {
-    const [song, setSong] = useState(null);
+const Information = data => {
     const [info, setInfo] = useState(null);
     const [newInfo, setNewInfo] = useState(null);
 
+    const location = useLocation();
+    const { state } = location;
+    //console.log(state.song);
+    // console.log(data);
+    let song;
+    if (data && data.song) {
+        song = data.song;
+    }
+    else {
+        song = state.song;
+    }
+    console.log(song);
+
     useEffect(() => {
         const fetchData = async () => {
-          const currentlyPlaying = await getCurrentlyPlaying();    
-          setSong(currentlyPlaying.data);
-          const res = await getArtistInformation(currentlyPlaying.data.item.artists[0].name);
+          const res = await getArtistInformation(song.item.artists[0].name);
           const json = await res.json();
           const pages = json.query.pages;
           const title = Object.keys(pages).map(id => pages[id].title);
@@ -29,7 +40,8 @@ const Information = () => {
           setNewInfo(newInfo);
         };
       
-        catchErrors(fetchData());
+        if (song) 
+          catchErrors(fetchData());
       }, []);
       
       useEffect(() => {

@@ -5,13 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "node",
+            // "type": "node",
+            "type": "msedge",
             "request": "launch",
             "name": "Launch Program",
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\index.js",
+            // "program": "${workspaceFolder}\\index.js",
+            "url": "http://192.168.4.158:3000",
             "outFiles": [
                 "${workspaceFolder}/**/*.js"
             ]

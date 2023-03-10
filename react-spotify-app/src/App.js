@@ -9,7 +9,7 @@ import {
 
 import { accessToken, logout } from './spotify';
 import { catchErrors } from './utils';
-import { Login, Data, Profile, Information } from './pages';
+import { Root, Login, Data, Profile, Information } from './pages';
 
 import './App.css';
 
@@ -43,25 +43,6 @@ function App() {
         )}  
     </div>
   );
-
-  function Root() {
-    return (
-      <>
-        <header className="App-header">
-          <nav>
-            <NavLink to="/" className="Styled-button">Home</NavLink>
-            <NavLink to="/information" className="Styled-button">Information</NavLink>
-            <NavLink to="/lyrics" className="Styled-button">Lyrics</NavLink>
-            <NavLink to="/profile" className="Styled-button">Profile</NavLink>
-            <NavLink to="/logout" className="Styled-button Logout-button">Log Out</NavLink>
-          </nav>
-        </header>
-        <Data />
-
-        <Outlet />
-      </>
-    )
-  }
 
   function Lyrics() {
     return (
