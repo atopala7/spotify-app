@@ -9,7 +9,7 @@ import {
 
 import { accessToken, logout } from './spotify';
 import { catchErrors } from './utils';
-import { Login, Data, Profile } from './pages';
+import { Login, Data, Profile, Information } from './pages';
 
 import './App.css';
 
@@ -59,14 +59,6 @@ function App() {
         <Data />
 
         <Outlet />
-      </>
-    )
-  }
-
-  function Information() {
-    return (
-      <>
-        <h1>Information</h1>
       </>
     )
   }
