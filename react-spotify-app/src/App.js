@@ -1,8 +1,11 @@
-import { useState, useEffect } from 'react';
+import { React, useState, useEffect } from 'react';
+import ReactDom from 'react-dom/client';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
+  Outlet,
+  Link,
 } from 'react-router-dom';
 
 import { accessToken, getCurrentUserProfile, logout } from './spotify';
@@ -29,25 +32,33 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Spotify App
-        </p>
         {!token ? (
-          <a
-          className="App-link"
-          href="http://192.168.4.158:8888/login"
-          rel="noopener noreferrer"
-        >
-          Log in to Spotify
-        </a>
+          <>
+            <img src={logo} className="App-logo" alt="logo" />
+            <p>
+              Spotify App
+            </p>
+            <a
+            className="Login-button"
+            // className="App-link"
+            href="http://192.168.4.158:8888/login"
+            rel="noopener noreferrer"
+          >
+            Log in to Spotify
+          </a>
+        </>
         ) : (
+          <>
           <Router>
             <Routes>
-              <Route path="/" element={<Root />} />    
-              <Route path="/information" element={<Information />} />
+              <Route path="/" element={<Root />}>    
+                <Route path="/data" element={<Data />} />
+                <Route path="/information" element={<Information />} />
+                <Route path="/logout" element={<Logout />} />
+              </Route>
             </Routes>
           </Router>
+          </>
         )}
       </header>
     </div>
@@ -56,17 +67,32 @@ function App() {
   function Root() {
     return (
       <>
-        <h1>Logged in!</h1>
-        <button onClick={logout}>Log Out</button>
-  
+        {/* <button className="Login-button" onClick={logout}>Log Out</button> */}
         {profile && (
           <div>
-            <h1>{profile.display_name}</h1>
+            {/* <h1>{profile.display_name}</h1>
             {profile.images.length && profile.images[0].url && (
               <img src={profile.images[0].url} alt="Avatar" />
-            )}
+            )} */}
           </div>
         )}
+
+        <nav>
+          <Link to="/">Home</Link>
+          <Link to="/data">Data</Link>
+          <Link to="/information">Information</Link>
+          <Link to="/logout">Log Out</Link>
+        </nav>
+
+        <Outlet />
+      </>
+    )
+  }
+
+  function Data() {
+    return (
+      <>
+        <h1>Data</h1>
       </>
     )
   }
@@ -75,6 +101,14 @@ function App() {
     return (
       <>
         <h1>Information</h1>
+      </>
+    )
+  }
+
+  function Logout() {
+    return (
+      <>
+        {logout()}
       </>
     )
   }

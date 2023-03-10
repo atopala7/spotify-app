@@ -14,12 +14,12 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #333;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   font-size: calc(10px + 2vmin);
   color: white;
 }
@@ -35,4 +35,40 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.Login-button {
+  background-color: green;
+  color: white;
+  padding: 10px 20px;
+  margin: 20px auto;
+  border-radius: 30px;
+  display: inline-block;
+}
+
+h1 {
+  color: rgb(75, 213, 238);
+  font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+  font-weight: 400;
+  font-size: 300%;
+}
+
+h2, h3 {
+  color: #FFFF82;
+  font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+  font-weight: lighter;   
+}
+
+nav a {
+  /* border: solid black 2px; */
+  border-radius: 5px;
+  background-color: #222;
+}
+
+a {
+  color: rgb(75, 213, 238);
+  /* font-family: Arial, Helvetica, sans-serif; */
+  font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+  font-weight: 400;
+  text-decoration: none;
 }
