@@ -8,7 +8,6 @@ import {
 } from 'react-router-dom';
 
 import { accessToken, logout } from './spotify';
-import { catchErrors } from './utils';
 import { Root, Login, Data, Profile, Information } from './pages';
 
 import './App.css';

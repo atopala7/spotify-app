@@ -1,6 +1,4 @@
 import { React, useState, useEffect } from 'react';
-import { useLocation } from "react-router-dom";
-
 import { Outlet } from 'react-router-dom';
 
 import { getCurrentlyPlaying } from '../spotify';
@@ -21,8 +19,13 @@ const Data = () => {
         getSong();
     }, []);
 
+    // Awaits the song that's currently playing and sets state variables accordingly
     const getSong = () => {
-        window.alert("Getting the song...");
+        // Clear the previous state variables
+        setData(null);
+        setStatus(null);
+        
+        console.log("Getting the song...");
         const fetchData = async () => {
             const currentlyPlaying = await getCurrentlyPlaying();
             setData(currentlyPlaying.data);

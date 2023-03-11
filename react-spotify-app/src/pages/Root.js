@@ -26,8 +26,8 @@ const Root = () => {
                 <NavLink to="/information" className="Styled-button">Information</NavLink>
                 <NavLink to="/lyrics" className="Styled-button">Lyrics</NavLink>
                 <NavLink to="/profile" className="Styled-button">Profile</NavLink>
-                {/* <NavLink to="/logout" className="Styled-button Logout-button" onClick={forceLogout()}>Log Out</NavLink> */}
-                <NavLink to="/logout" className="Styled-button Logout-button" onClick={logout}>Log Out</NavLink>
+                <NavLink to="/logout" className="Styled-button Logout-button">Log Out</NavLink>
+                {/* <NavLink to="/logout" className="Styled-button Logout-button" onClick={logout}>Log Out</NavLink> */}
                 </nav>
             </header>
             <Data />
