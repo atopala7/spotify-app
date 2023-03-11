@@ -53,6 +53,7 @@ function App() {
   }
 
   function Logout() {
+    console.log("Logging out...");
     return (
       <>
         {logout()}

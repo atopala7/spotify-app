@@ -10,19 +10,13 @@ import '../styles/information.css'
 
 const Information = () => {
     const [info, setInfo] = useState(null);
-    const [newInfo, setNewInfo] = useState(null);
+    let valid = false;
 
     let song = useOutletContext();
 
-    // console.log(song);
-
-    // let song;
-    // if (data && data.song) {
-    //   console.log("Information component is being initialized with data from Data.");
-    //   song = data.song;
-    // }
-
+    console.log("Information component-----------------------------------")
     console.log(song);
+    console.log("Information component-----------------------------------");
 
     useEffect(() => {
         const fetchData = async () => {
@@ -42,12 +36,9 @@ const Information = () => {
       
         if (song) 
           catchErrors(fetchData());
-      }, []);
-      
-      useEffect(() => {
-        setInfo(newInfo);
-      }, [newInfo]);
-
+          valid = true;
+      }, [song]);
+    
     return (
         <>
             {info && (
@@ -59,7 +50,11 @@ const Information = () => {
             song && (
                 <p>Loading data for {song.item.artists[0].name}...</p>
             ) ||            
-            (<p>Loading...</p>)}
+            valid && (
+              <p>Loading...</p>
+            ) || (
+              <p>No song is playing.</p>
+            )}
         </>
     )
 };

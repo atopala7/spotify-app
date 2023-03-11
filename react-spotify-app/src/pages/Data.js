@@ -8,33 +8,61 @@ import { catchErrors } from '../utils';
 
 import '../styles/data.css'
 
-const Data = data => {
-    let song;
-    if (data && data.song) {
-        console.log("Data component is being initialized with data from Root.");
-        song = data.song;
+const Data = () => {
+    /**
+     * STATE VARIABLES
+     * Data is the Spotify data returned by the https://api.spotify.com/v1/me/player/currently-playing endpoint
+     * Status is the response status, which if 204 indicates that no song is currently playing
+     */
+    const [data, setData] = useState(null);
+    const [status, setStatus] = useState(null);
+
+    useEffect(() => {
+        getSong();
+    }, []);
+
+    const getSong = () => {
+        window.alert("Getting the song...");
+        const fetchData = async () => {
+            const currentlyPlaying = await getCurrentlyPlaying();
+            setData(currentlyPlaying.data);
+            setStatus(currentlyPlaying.status);
+        };
+        
+        catchErrors(fetchData());
     }
-    else {
-        console.log("Failed to initialize Data component!");
-    }
-    // console.log(song);
+
+    console.log("Data component---------------------------");
+    console.log(data);
+    console.log("Data component---------------------------");
 
     return (
         <>
-            {song && (
+            {data && (
                 <>
                 <div className='data'>
-                   <img className='data-image' src={song.item.album.images[1].url} />
+                   <img className='data-image' src={data.item.album.images[1].url} onClick={getSong} />
                     <div className='data-info'>
-                        <h1>{song.item.name}</h1>
-                        <h2>{song.item.artists[0].name}</h2>
-                        <h2>{song.item.album.name}</h2>
+                        <h1>{data.item.name}</h1>
+                        <h2>{data.item.artists[0].name}</h2>
+                        <h2>{data.item.album.name}</h2>
                     </div>
                 </div>
-                <Outlet context={song}/>
+                <Outlet context={data}/>
                 </>
             ) ||
-            (<p>Loading currently playing song...</p>)}
+            status == 204 && (
+                <>
+                    <p>No song is currently playing.</p>
+                    <Outlet />
+                </>
+            ) ||
+            (
+                <>
+                    <p>Loading currently playing song...</p>
+                    <Outlet />
+                </>
+            )}
         </>
     )
 };
