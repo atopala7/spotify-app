@@ -6,3 +6,12 @@ export const catchErrors = fn => {
         });
     }
 }
+
+export const shortenString = (str, len) => {
+    if (str.length > len) {
+        return str.slice(0, len).concat("...");
+    }
+    else {
+        return str;
+    }
+}

@@ -43,6 +43,7 @@ app.get("/login", (req, res) => {
 	// The scopes required for the requests
 	const scope = [
 		"user-read-currently-playing",
+		"user-read-recently-played",
 	].join(' ');
 
 	const queryParams = querystring.stringify({

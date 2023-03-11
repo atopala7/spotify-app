@@ -8,7 +8,7 @@ import {
     useNavigate,
   } from 'react-router-dom';
 
-import { Data } from '.';
+import { Data, Recent } from '.';
 
 import { getCurrentlyPlaying } from '../spotify';
 import { accessToken, logout } from '../spotify';
@@ -38,9 +38,7 @@ const Root = () => {
                 <Data />
             </div>
             <div id="sidebar">
-                <p>
-                    Sidebar
-                </p>
+                <Recent />
             </div>
         </div>
         </>

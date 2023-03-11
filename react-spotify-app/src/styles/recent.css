@@ -1,0 +1,31 @@
+.recent-item {
+    display: flex;
+    transition: 0.5s;
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
+    /* color: #FFFF82; */
+}
+
+.recent-item:hover {
+    background-color: #222;
+    padding-left: 2em;
+    cursor: pointer;
+}
+
+.recent-image {
+    height: 64px;
+    width: 64px;
+}
+
+.recent-info {
+    flex: 1;
+    justify-content: right;
+}
+
+.recent-item p {
+    margin: 0;
+}
+
+.recent-item .recent-item-title {
+    color: rgb(75, 213, 238);
+}

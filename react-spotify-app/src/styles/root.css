@@ -12,8 +12,15 @@
 }
 
 #sidebar {
-    width: 20rem;
+    width: 64px;
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
+    text-overflow: clip;
+    white-space: nowrap;
     transition: 0.5s;
+}
+
+#sidebar:hover {
+    width: 20rem;
 }

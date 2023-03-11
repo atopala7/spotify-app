@@ -145,6 +145,14 @@ export const getCurrentlyPlaying = () => {
     return axios.get('/me/player/currently-playing');
 }
 
+/**
+ * Get recently played songs
+ * @returns {Promise}
+ */
+export const getRecentlyPlayed = () => {
+    return axios.get('/me/player/recently-played');
+}
+
 export const accessToken = getAccessToken();
 
 /**
