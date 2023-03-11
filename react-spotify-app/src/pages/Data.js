@@ -5,6 +5,7 @@ import { getCurrentlyPlaying } from '../spotify';
 import { catchErrors } from '../utils';
 
 import '../styles/data.css'
+import refresh from '../images/refresh.png';
 
 const Data = () => {
     /**
@@ -44,7 +45,10 @@ const Data = () => {
             {data && (
                 <>
                 <div className='data'>
-                   <img className='data-image' src={data.item.album.images[1].url} onClick={getSong} />
+                    <div className='data-image-container' onClick={getSong}>
+                        <img className='data-image' src={data.item.album.images[1].url} />
+                        <img className='data-refresh' src={refresh} />
+                    </div>
                     <div className='data-info'>
                         <h1>{data.item.name}</h1>
                         <h2>{data.item.artists.map(artist => artist.name).join(', ')}</h2>
