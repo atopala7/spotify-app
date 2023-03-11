@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from 'react';
 import { useOutletContext } from "react-router-dom";
 
-import { getArtistInformation } from '../wikipedia';
+import { getArtistInformation, getArtistsInformation } from '../wikipedia';
 import { catchErrors } from '../utils';
 
 import '../styles/information.css'
@@ -25,27 +25,10 @@ const Information = () => {
     // That is, when the Outlet context changes because of a change in the Data component, the hook will fire to get new Wiki data
     useEffect(() => {
         const fetchData = async () => {
-          // TODO: get data for multiple artists and collaborators
-          const res = await getArtistInformation(song.item.artists[0].name);
-          const json = await res.json();
-
-          console.log("Information component json-------------------------------");
-          console.log(json);
-          console.log("Information component json-------------------------------");
-
-          const pages = json.query.pages;
-
-          // Create arrays of titles and extracts using each id in the pages object
-          // There should only be one id in each pages object, so title and contents should both be single-element arrays
-          const title = Object.keys(pages).map(id => pages[id].title);
-          const contents = Object.keys(pages).map(id => pages[id].extract);
-      
-          const newInfo = {
-            'title': title,
-            'contents': contents,
-          };
-          
-          setInfo(newInfo);
+          // console.log(song.item.artists);
+          const artists = Object.keys(song.item.artists).map(i => song.item.artists[i].name);
+          const artistInfo = await getArtistsInformation(artists);
+          setInfo(artistInfo);
         };
       
         // If a song exists, fetch the corresponding data
@@ -57,12 +40,16 @@ const Information = () => {
         <>
             {info && (
                 <div className='info'>
-                    <h1>{info.title}</h1>
-                    <div dangerouslySetInnerHTML={{ __html: info.contents }}></div>
+                {info.map((artist => (
+                  <div className="infoItem" key={artist.title}>
+                    <h1 className="infoItemTitle">{artist.title}</h1>
+                    <div className="infoItemContents" dangerouslySetInnerHTML={{ __html: ((artist.contents.toString() && !artist.contents.toString().startsWith("<!--")) ? artist.contents : "No information available.") }}></div>
+                    </div>
+                )))}
                 </div>
             ) || 
             song && (
-                <p>Loading data for {song.item.artists[0].name}...</p>
+                <p>Loading data for {Object.keys(song.item.artists).map(i => song.item.artists[i].name).join(", ")}...</p>
             ) ||            
             (
               <p>No song is playing.</p>

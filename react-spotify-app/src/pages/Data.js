@@ -24,7 +24,7 @@ const Data = () => {
         // Clear the previous state variables
         setData(null);
         setStatus(null);
-        
+
         console.log("Getting the song...");
         const fetchData = async () => {
             const currentlyPlaying = await getCurrentlyPlaying();
@@ -47,7 +47,7 @@ const Data = () => {
                    <img className='data-image' src={data.item.album.images[1].url} onClick={getSong} />
                     <div className='data-info'>
                         <h1>{data.item.name}</h1>
-                        <h2>{data.item.artists[0].name}</h2>
+                        <h2>{data.item.artists.map(artist => artist.name).join(', ')}</h2>
                         <h2>{data.item.album.name}</h2>
                     </div>
                 </div>
