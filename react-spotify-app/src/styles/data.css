@@ -9,12 +9,11 @@
 }
 
 .data-image-container {
-    position: relative; /* Set the parent container to relative position */
+    position: relative;
     max-width: 250px;
     min-width: 120px;
     border-radius: 10%;
     transition: 0.5s;
-    /* background-color: white; */
 }
 
 img.data-image {
@@ -51,18 +50,16 @@ img.data-refresh {
 
 .data-image-container:hover img.data-refresh {
     opacity: 1;
-    rotate: -360deg;
+    rotate: 360deg;
     transition: rotate 1s, opacity 0.5s;
 }
 
 .data-info h1 {
     text-shadow: 0 4px 10px rgb(0 0 0 / 100%);
-    transition: 0.5s;
 }
 
 h2 {
     text-shadow: 0 4px 10px rgb(0 0 0 / 100%);
-    transition: 0.5s;
 }
 
 @media only screen and (max-width: 600px) {

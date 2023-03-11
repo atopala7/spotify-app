@@ -80,12 +80,10 @@ h2, h3 {
 
 nav {
   background-color: #222;
-  /* width: 100vw; */
 }
 
 a {
   color: rgb(75, 213, 238);
-  /* font-family: Arial, Helvetica, sans-serif; */
   font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
   font-weight: 400;
   text-decoration: none;
