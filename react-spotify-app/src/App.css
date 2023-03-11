@@ -1,3 +1,7 @@
+html {
+  background-color: #333;
+}
+
 .App {
   text-align: center;
   background-color: #333;
@@ -21,9 +25,9 @@
 }
 
 .App-header {
-  width: 100%;
   font-size: calc(10px + 2vmin);
   color: white;
+  transition: 1s;
 }
 
 .App-link {
