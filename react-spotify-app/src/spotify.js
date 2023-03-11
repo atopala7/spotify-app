@@ -118,7 +118,7 @@ const refreshToken = async () => {
  * @returns {void}
  */
 export const logout = () => {
-    window.alert("Clearing local storage...");
+    console.log("Clearing local storage...");
     // Clear all local storage items
     for (const property in LOCALSTORAGE_KEYS) {
         console.log(`Clearing ${property} from local storage...`);
