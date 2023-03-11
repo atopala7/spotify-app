@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from 'react';
 import { useLocation } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 
 import { getCurrentlyPlaying } from '../spotify';
 import { getArtistInformation } from '../wikipedia';
@@ -7,21 +8,20 @@ import { catchErrors } from '../utils';
 
 import '../styles/information.css'
 
-const Information = data => {
+const Information = () => {
     const [info, setInfo] = useState(null);
     const [newInfo, setNewInfo] = useState(null);
 
-    const location = useLocation();
-    const { state } = location;
-    //console.log(state.song);
-    // console.log(data);
-    let song;
-    if (data && data.song) {
-        song = data.song;
-    }
-    else {
-        song = state.song;
-    }
+    let song = useOutletContext();
+
+    // console.log(song);
+
+    // let song;
+    // if (data && data.song) {
+    //   console.log("Information component is being initialized with data from Data.");
+    //   song = data.song;
+    // }
+
     console.log(song);
 
     useEffect(() => {
@@ -37,7 +37,7 @@ const Information = data => {
             'contents': contents,
           };
           
-          setNewInfo(newInfo);
+          setInfo(newInfo);
         };
       
         if (song) 

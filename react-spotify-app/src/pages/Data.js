@@ -9,18 +9,15 @@ import { catchErrors } from '../utils';
 import '../styles/data.css'
 
 const Data = data => {
-    const location = useLocation();
-    const { state } = location;
-    //console.log(state.song);
-    // console.log(data);
     let song;
     if (data && data.song) {
+        console.log("Data component is being initialized with data from Root.");
         song = data.song;
     }
     else {
-        song = state.song;
+        console.log("Failed to initialize Data component!");
     }
-    console.log(song);
+    // console.log(song);
 
     return (
         <>
@@ -34,7 +31,7 @@ const Data = data => {
                         <h2>{song.item.album.name}</h2>
                     </div>
                 </div>
-                <Outlet />
+                <Outlet context={song}/>
                 </>
             ) ||
             (<p>Loading currently playing song...</p>)}

@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react';
+import { React, useState, useEffect, createContext } from 'react';
 import {
     BrowserRouter as Router,
     Routes,
@@ -33,11 +33,10 @@ const Root = () => {
             <header className="App-header">
                 <nav>
                 <NavLink to="/" className="Styled-button">Home</NavLink>
-                <NavLink to={{pathname: "/data"}}
+                {/* <NavLink to={{pathname: "/data"}}
                             state={{ song: data }}
-                             className="Styled-button">Data</NavLink>
-                <NavLink to={{pathname: "/information"}}
-                            state={{ song: data }} className="Styled-button">Information</NavLink>
+                             className="Styled-button">Data</NavLink> */}
+                <NavLink to="/information" className="Styled-button">Information</NavLink>
                 <NavLink to="/lyrics" className="Styled-button">Lyrics</NavLink>
                 <NavLink to="/profile" className="Styled-button">Profile</NavLink>
                 <NavLink to="/logout" className="Styled-button Logout-button">Log Out</NavLink>
