@@ -10,7 +10,7 @@
     align-items: center;
     justify-content: flex-start;
     position: relative;
-    width: 100vw;
+    width: 100%;
 }
 
 .infoItem .infoItemContents {
