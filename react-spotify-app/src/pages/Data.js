@@ -63,7 +63,7 @@ const Data = props => {
 
             const thisSong = {
                 albumArt: select.albumArt,
-                songName: select.name,
+                songName: select.songName,
                 artists: select.artists,
                 albumName: select.albumName
             };
