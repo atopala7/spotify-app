@@ -47,6 +47,7 @@ const Recent = props => {
             albumName: song.track.album.name
         };
         props.rootSelectSong(thisSong);
+        window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
     const setSong = () => {
