@@ -26,7 +26,7 @@ const Information = () => {
     useEffect(() => {
         const fetchData = async () => {
           // console.log(song.item.artists);
-          const artists = Object.keys(song.item.artists).map(i => song.item.artists[i].name);
+          const artists = Object.keys(song.artists).map(i => song.artists[i].name);
           const artistInfo = await getArtistsInformation(artists);
           setInfo(artistInfo);
         };
@@ -49,7 +49,7 @@ const Information = () => {
                 </div>
             ) || 
             song && (
-                <p>Loading data for {Object.keys(song.item.artists).map(i => song.item.artists[i].name).join(", ")}...</p>
+                <p>Loading data for {Object.keys(song.artists).map(i => song.artists[i].name).join(", ")}...</p>
             ) ||            
             (
               <p>No song is playing.</p>

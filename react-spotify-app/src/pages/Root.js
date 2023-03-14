@@ -17,7 +17,12 @@ import { catchErrors } from '../utils';
 import '../styles/root.css'
 
 const Root = () => {
-    const song = null;
+    const [song, setSong] = useState(null);
+
+    const selectSong = select => {
+        setSong(select);
+        // console.log(song);
+    }
 
     return (
         <>
@@ -36,10 +41,10 @@ const Root = () => {
                     {/* <NavLink to="/logout" className="Styled-button Logout-button" onClick={logout}>Log Out</NavLink> */}
                     </nav>
                 </header>
-                <Data data={song} />
+                <Data selectedSong={song} rootSelectSong={selectSong} />
             </div>
             <div id="sidebar">
-                <Recent />
+                <Recent rootSelectSong={selectSong} />
             </div>
         </div>
         </>

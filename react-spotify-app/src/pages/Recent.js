@@ -6,7 +6,7 @@ import { catchErrors, shortenString } from '../utils';
 
 import '../styles/recent.css'
 
-const Recent = () => {
+const Recent = props => {
     /**
      * STATE VARIABLES
      * Data is the Spotify data returned by the https://api.spotify.com/v1/me/player/recently-played endpoint
@@ -37,13 +37,25 @@ const Recent = () => {
         catchErrors(fetchData());
     }
 
+    const recentSelectSong = song => {
+        // selectSong(data.items[0].track.id);
+        console.log("recentSelectSong: " + song);
+        const thisSong = {
+            albumArt: song.track.album.images[1].url,
+            songName: song.track.name,
+            artists: song.track.artists,
+            albumName: song.track.album.name
+        };
+        props.rootSelectSong(thisSong);
+    }
+
     const setSong = () => {
         return 0;
     }
 
-    console.log("Recent component---------------------------");
-    console.log(data);
-    console.log("Recent component---------------------------");
+    // console.log("Recent component---------------------------");
+    // console.log(data);
+    // console.log("Recent component---------------------------");
 
     return (
         <>
@@ -51,7 +63,9 @@ const Recent = () => {
             {data && (
                 <>
                     {data.items.map(((song, index) => (
-                        <div className="recent-item" key={`song.track.id-${index}`} onClick={setSong}>
+                        <div className="recent-item" key={`song.track.id-${index}`} onClick={() => {
+                            recentSelectSong(song);
+                        }}>
                             <img className='recent-image' src={song.track.album.images[2].url} />
                             <p className="recent-info">
                                 <span className="recent-item-title">{song.track.name}</span><br />
