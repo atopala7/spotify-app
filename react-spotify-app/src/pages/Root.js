@@ -16,7 +16,9 @@ import { catchErrors } from '../utils';
 
 import '../styles/root.css'
 
-const Root = () => {   
+const Root = () => {
+    const song = null;
+
     return (
         <>
         <div className="root">
@@ -34,8 +36,7 @@ const Root = () => {
                     {/* <NavLink to="/logout" className="Styled-button Logout-button" onClick={logout}>Log Out</NavLink> */}
                     </nav>
                 </header>
-                
-                <Data />
+                <Data data={song} />
             </div>
             <div id="sidebar">
                 <Recent />
