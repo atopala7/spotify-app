@@ -54,7 +54,9 @@ const Data = props => {
                 setData(currentlyPlaying.data);
                 setStatus(currentlyPlaying.status);
 
-                console.log(data);
+                console.log(data); 
+
+                if (!data) setSong(null);
             };
             catchErrors(fetchData());
         }

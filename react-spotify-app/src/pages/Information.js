@@ -34,6 +34,8 @@ const Information = () => {
         // If a song exists, fetch the corresponding data
         if (song) 
           catchErrors(fetchData());
+        else
+          setInfo(null);
       }, [song]);
     
     return (
