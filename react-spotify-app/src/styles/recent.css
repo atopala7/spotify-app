@@ -19,6 +19,8 @@
 .recent-info {
     flex: 1;
     justify-content: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .recent-item p {

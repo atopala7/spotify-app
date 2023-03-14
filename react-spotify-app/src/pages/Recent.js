@@ -54,9 +54,9 @@ const Recent = () => {
                         <div className="recent-item" key={`song.track.id-${index}`} onClick={setSong}>
                             <img className='recent-image' src={song.track.album.images[2].url} />
                             <p className="recent-info">
-                                <span className="recent-item-title">{shortenString(song.track.name, strLength)}</span><br />
-                                {shortenString(song.track.artists[0].name, strLength)}<br />
-                                {shortenString(song.track.album.name, strLength)}</p>
+                                <span className="recent-item-title">{song.track.name}</span><br />
+                                {song.track.artists[0].name}<br />
+                                {song.track.album.name}</p>
                         </div>
                     )))}
                 </>
