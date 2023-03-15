@@ -5,6 +5,7 @@ export const getArtistsInformation = async artistName => {
 
     for (let artist of artistName) {
         const url = `https://en.wikipedia.org/w/api.php?action=query&origin=*&prop=extracts&format=json&exintro=&titles=${artist}`;
+        const url2 = `https://en.wikipedia.org/w/api.php?action=parse&&format=json&origin=*&page=${artistName}`;
         const res = await fetch(url)
         const json = await res.json();
 
