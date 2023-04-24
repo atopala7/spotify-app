@@ -21,7 +21,6 @@ const Root = () => {
 
     const selectSong = select => {
         setSong(select);
-        // console.log(song);
     }
 
     return (
@@ -38,7 +37,6 @@ const Root = () => {
                     <NavLink to="/lyrics" className="Styled-button">Lyrics</NavLink>
                     <NavLink to="/profile" className="Styled-button">Profile</NavLink>
                     <NavLink to="/logout" className="Styled-button Logout-button">Log Out</NavLink>
-                    {/* <NavLink to="/logout" className="Styled-button Logout-button" onClick={logout}>Log Out</NavLink> */}
                     </nav>
                 </header>
                 <Data selectedSong={song} rootSelectSong={selectSong} />
