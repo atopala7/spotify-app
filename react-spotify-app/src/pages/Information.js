@@ -25,7 +25,6 @@ const Information = () => {
     // That is, when the Outlet context changes because of a change in the Data component, the hook will fire to get new Wiki data
     useEffect(() => {
         const fetchData = async () => {
-          // console.log(song.item.artists);
           const artists = Object.keys(song.artists).map(i => song.artists[i].name);
           const artistInfo = await getArtistsInformation(artists);
           setInfo(artistInfo);

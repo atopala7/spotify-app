@@ -77,11 +77,6 @@ const Data = props => {
         }
     }
 
-    // console.log("Data component start---------------------------");
-    // console.log(data);
-    // console.log(props.selectedSong);
-    // console.log("Data component end---------------------------");
-
     return (
         <>
             {song && (
