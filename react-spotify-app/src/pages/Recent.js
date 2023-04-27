@@ -15,8 +15,6 @@ const Recent = props => {
     const [data, setData] = useState(null);
     const [status, setStatus] = useState(null);
 
-    // const strLength = 25;
-
     useEffect(() => {
         getRecentSongs();
     }, []);
