@@ -52,10 +52,6 @@ const Recent = props => {
         return 0;
     }
 
-    // console.log("Recent component---------------------------");
-    // console.log(data);
-    // console.log("Recent component---------------------------");
-
     return (
         <>
             Recent
