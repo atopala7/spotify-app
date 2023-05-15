@@ -6,19 +6,30 @@
 }
 
 .contents {
+    position: relative;
     display: flex;
     flex-direction: column;
     flex: 1;
+    margin-left: 64px;
 }
 
 #sidebar {
+    background-color: #333;
     width: 64px;
+    padding-right:6px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
     text-overflow: clip;
     white-space: nowrap;
     transition: 0.5s;
+    height: 100vh;
+    overflow-y: auto;
+    
 }
 
 #sidebar:hover {
