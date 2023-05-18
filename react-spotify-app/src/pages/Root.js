@@ -41,8 +41,10 @@ const Root = () => {
                 </header>
                 <Data selectedSong={song} rootSelectSong={selectSong} />
             </div>
-            <div id="sidebar">
-                <Recent rootSelectSong={selectSong} />
+            <div class="wrap">
+                <div id="sidebar">
+                    <Recent rootSelectSong={selectSong} />
+                </div>
             </div>
         </div>
         </>
