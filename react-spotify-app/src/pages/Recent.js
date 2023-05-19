@@ -54,7 +54,9 @@ const Recent = props => {
 
     return (
         <>
-            Recent
+            <div id="recent-header">
+                Recent
+            </div>
             {data && (
                 <>
                     {data.items.map(((song, index) => (

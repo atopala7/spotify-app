@@ -26,18 +26,9 @@
     white-space: nowrap;
     transition: 0.5s;
     height: 100vh;
-    overflow-y: auto;
+    overflow-y: hidden;
 }
 
 #sidebar:hover {
     width: 20rem;
-}
-
-/* For Chrome, Edge, and Safari */
-*::-webkit-scrollbar {
-    width: 2px;
-}
-*::-webkit-scrollbar-thumb {
-    border-radius: 20px;
-    border: 1px solid gray;
 }

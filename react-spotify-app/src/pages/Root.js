@@ -23,6 +23,18 @@ const Root = () => {
         setSong(select);
     }
 
+    const openSidebar = () => {
+        //document.querySelector("#sidebar").style.width = "20rem";
+        document.querySelector("#sidebar").style.overflowY = "scroll";
+        document.querySelector("#recent-header").innerHTML = "Recently Played";
+    }
+
+    const closeSidebar = () => {
+        //document.querySelector("#sidebar").style.width = "64px";
+        document.querySelector("#sidebar").style.overflowY = "hidden";
+        document.querySelector("#recent-header").innerHTML = "Recent";
+    }
+
     return (
         <>
         <div className="root">
@@ -41,10 +53,13 @@ const Root = () => {
                 </header>
                 <Data selectedSong={song} rootSelectSong={selectSong} />
             </div>
-            <div class="wrap">
-                <div id="sidebar">
-                    <Recent rootSelectSong={selectSong} />
-                </div>
+            <div id="sidebar" onMouseOver={() => {
+                openSidebar();
+            }}
+            onMouseOut={() => {
+                closeSidebar();
+            }}>
+                <Recent rootSelectSong={selectSong} />
             </div>
         </div>
         </>

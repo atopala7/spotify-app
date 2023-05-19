@@ -30,3 +30,9 @@
 .recent-item .recent-item-title {
     color: rgb(75, 213, 238);
 }
+
+#recent-header {
+    top: 0;
+    position: sticky;
+    background-color: #333;
+}
