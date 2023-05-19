@@ -23,6 +23,7 @@ img.data-image {
     min-width: 120px;
     border-radius: 10%;
     transition: 0.5s;
+    box-shadow: 0 4px 10px rgb(0 0 0 / 100%);
 }
 
 img.data-refresh {
@@ -54,12 +55,16 @@ img.data-refresh {
     transition: rotate 1s, opacity 0.5s;
 }
 
+.data-info {
+    max-width: 80%;
+}
+
 .data-info h1 {
-    text-shadow: 0 4px 10px rgb(0 0 0 / 100%);
+    text-shadow: 0 10px 10px rgb(0 0 0 / 100%);
 }
 
 h2 {
-    text-shadow: 0 4px 10px rgb(0 0 0 / 100%);
+    text-shadow: 0 10px 10px rgb(0 0 0 / 100%);
 }
 
 @media only screen and (max-width: 600px) {
