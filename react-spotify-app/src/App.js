@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom';
 
 import { accessToken, logout } from './spotify';
-import { Root, Login, Data, Profile, Information } from './pages';
+import { Root, Login, Data, Profile, Information, Lyrics } from './pages';
 
 import './App.css';
 
@@ -42,14 +42,6 @@ function App() {
         )}  
     </div>
   );
-
-  function Lyrics() {
-    return (
-      <>
-        <h1>Lyrics</h1>
-      </>
-    )
-  }
 
   function Logout() {
     console.log("Logging out...");
