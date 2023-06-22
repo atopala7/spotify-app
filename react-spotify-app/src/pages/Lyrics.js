@@ -22,7 +22,6 @@ const Lyrics = () => {
     console.log("Lyrics component song-------------------------------");
 
     // The useEffect hook will run whenever the song variable changes
-    // That is, when the Outlet context changes because of a change in the Data component, the hook will fire to get new Wiki data
     useEffect(() => {
         const fetchData = async () => {
           const artists = Object.keys(song.artists).map(i => song.artists[i].name);
