@@ -2,9 +2,10 @@
 require("dotenv").config();
 const GENIUS_CLIENT_ID = process.env.GENIUS_CLIENT_ID;
 const GENIUS_CLIENT_SECRET = process.env.GENIUS_CLIENT_SECRET;
+
 // const GENIUS_REDIRECT_URI = process.env.GENIUS_REDIRECT_URI;
 
-const client_token = "NPfa4dvGEVBq9tbjiR-9yoOBb9HfRSgE_I_uBcwsdef1TZxs2zDUToh082pMvmwf";
+// const client_token = "NPfa4dvGEVBq9tbjiR-9yoOBb9HfRSgE_I_uBcwsdef1TZxs2zDUToh082pMvmwf";
 
 /**
  * Retrieves the Genius access token from local storage or from the URL query params
