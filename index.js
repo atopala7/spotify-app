@@ -10,6 +10,7 @@ const REDIRECT_URI = process.env.REDIRECT_URI;
 const GENIUS_CLIENT_ID = process.env.GENIUS_CLIENT_ID;
 const GENIUS_CLIENT_SECRET = process.env.GENIUS_CLIENT_SECRET;
 const GENIUS_REDIRECT_URI = process.env.GENIUS_REDIRECT_URI;
+const GENIUS_CLIENT_ACCESS_TOKEN = process.env.CENIUS_CLIENT_ACCESS_TOKEN;
 
 const express = require("express");
 const app = express();
@@ -37,6 +38,11 @@ const stateKey = "spotify_auth_state";
 
 app.get('/', (req, res) => {
 	res.send("<a href='/login'>Login</a>");
+});
+
+// Connect to the Genius API and return data for the given song
+app.get("/genius", (req, res) => {
+	res.redirect(`https://api.genius.com/songs/378195?access_token=5psRWtPtLvR9hYZ1DEd84KFKcI-54iXoH-TyOGlugWlZ2SloxIj3UOzulaQXTEV0`);
 });
 
 // Log in with OAuth to receive an authorization code
