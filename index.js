@@ -6,6 +6,11 @@ const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const REDIRECT_URI = process.env.REDIRECT_URI;
 
+// Genius environment variables saved onto the server
+const GENIUS_CLIENT_ID = process.env.GENIUS_CLIENT_ID;
+const GENIUS_CLIENT_SECRET = process.env.GENIUS_CLIENT_SECRET;
+const GENIUS_REDIRECT_URI = process.env.GENIUS_REDIRECT_URI;
+
 const express = require("express");
 const app = express();
 const port = 8888;
