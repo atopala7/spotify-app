@@ -42,7 +42,12 @@ app.get('/', (req, res) => {
 
 // Connect to the Genius API and return data for the given song
 app.get("/genius", (req, res) => {
-	res.redirect(`https://api.genius.com/songs/378195?access_token=5psRWtPtLvR9hYZ1DEd84KFKcI-54iXoH-TyOGlugWlZ2SloxIj3UOzulaQXTEV0`);
+	console.log("/genius");
+	window.alert("/genius");
+	window.alert("Test");
+	const accessToken = "5psRWtPtLvR9hYZ1DEd84KFKcI-54iXoH-TyOGlugWlZ2SloxIj3UOzulaQXTEV0";
+	//res.redirect(`https://api.genius.com/songs/378195?access_token=${accessToken}`);
+	//res.redirect(`https://api.genius.com/songs/378195?access_token=5psRWtPtLvR9hYZ1DEd84KFKcI-54iXoH-TyOGlugWlZ2SloxIj3UOzulaQXTEV0`);
 });
 
 // Log in with OAuth to receive an authorization code
