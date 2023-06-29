@@ -10,11 +10,3 @@ export const getLyrics = () => {
     // return axios.get(`http://192.168.4.158:8888/genius`);
     return axios.get(`https://api.genius.com/songs/378195?access_token=${accessToken}`);
 };
-
-/**
- * Axios global request headers
- * https://github.com/axios/axios#global-axios-defaults
- */
-// axios.defaults.baseURL = 'https://api.genius.com/';
-// axios.defaults.headers['Authorization'] = `Bearer ${accessToken}`;
-// axios.defaults.headers['Content-Type'] = 'application/json';
