@@ -36,7 +36,6 @@ const Recent = props => {
     }
 
     const recentSelectSong = song => {
-        // selectSong(data.items[0].track.id);
         console.log("recentSelectSong: " + song);
         const thisSong = {
             albumArt: song.track.album.images[1].url,
@@ -46,10 +45,6 @@ const Recent = props => {
         };
         props.rootSelectSong(thisSong);
         window.scrollTo({top: 0, behavior: 'smooth'});
-    }
-
-    const setSong = () => {
-        return 0;
     }
 
     return (
