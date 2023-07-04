@@ -42,9 +42,6 @@ const Root = () => {
                 <header className="App-header">
                     <nav>
                     <NavLink to="/" className="Styled-button">Home</NavLink>
-                    {/* <NavLink to={{pathname: "/data"}}
-                                state={{ song: data }}
-                                className="Styled-button">Data</NavLink> */}
                     <NavLink to="/information" className="Styled-button">Information</NavLink>
                     <NavLink to="/lyrics" className="Styled-button">Lyrics</NavLink>
                     <NavLink to="/profile" className="Styled-button">Profile</NavLink>
