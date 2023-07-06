@@ -2,7 +2,6 @@ import { React, useState, useEffect } from 'react';
 import { useOutletContext } from "react-router-dom";
 
 import { getArtistInformation, getArtistsInformation } from '../wikipedia';
-import { getLyrics } from '../genius';
 import { catchErrors } from '../utils';
 
 import '../styles/information.css'

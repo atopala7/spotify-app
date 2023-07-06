@@ -40,12 +40,6 @@ app.get('/', (req, res) => {
 	res.send("<a href='/login'>Login</a>");
 });
 
-// Connect to the Genius API and return data for the given song
-app.get("/genius", (req, res) => {
-	const accessToken = "5psRWtPtLvR9hYZ1DEd84KFKcI-54iXoH-TyOGlugWlZ2SloxIj3UOzulaQXTEV0";
-	res.redirect(`https://api.genius.com/songs/378195?access_token=${accessToken}`);
-});
-
 // Log in with OAuth to receive an authorization code
 app.get("/login", (req, res) => {
 	const state = generateRandomString(16);
