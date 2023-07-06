@@ -2,6 +2,7 @@ import { React, useState, useEffect } from 'react';
 import { useOutletContext } from "react-router-dom";
 
 import { getArtistInformation, getArtistsInformation } from '../wikipedia';
+import { getLyrics } from '../musixmatch';
 import { catchErrors } from '../utils';
 
 import '../styles/information.css'

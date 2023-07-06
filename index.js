@@ -6,11 +6,8 @@ const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const REDIRECT_URI = process.env.REDIRECT_URI;
 
-// Genius environment variables saved onto the server
-const GENIUS_CLIENT_ID = process.env.GENIUS_CLIENT_ID;
-const GENIUS_CLIENT_SECRET = process.env.GENIUS_CLIENT_SECRET;
-const GENIUS_REDIRECT_URI = process.env.GENIUS_REDIRECT_URI;
-const GENIUS_CLIENT_ACCESS_TOKEN = process.env.CENIUS_CLIENT_ACCESS_TOKEN;
+// Musixmatch API key saved onto the server
+const MUSIXMATCH_API_KEY = process.env.MUSIXMATCH_API_KEY;
 
 const express = require("express");
 const app = express();
@@ -131,6 +128,11 @@ app.get("/refresh_token", (req, res) => {
 		.catch(error => {
 			res.send(error);
 		});
+});
+
+// Return the Musixmatch API key
+app.get("/musixmatch", (req, res) => {
+	res.send(MUSIXMATCH_API_KEY);
 });
 
 app.listen(port, () => {
