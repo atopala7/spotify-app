@@ -130,11 +130,6 @@ app.get("/refresh_token", (req, res) => {
 		});
 });
 
-// Return the Musixmatch API key
-app.get("/musixmatch", (req, res) => {
-	res.send(MUSIXMATCH_API_KEY);
-});
-
 app.listen(port, () => {
 	console.log(`Express app listening at http://localhost:${port}`);
 });
