@@ -8,5 +8,4 @@ export const getLyrics = async (trackName, artistName) => {
     console.log(API_KEY);
 
     let url = `https://api.musixmatch.com/ws/1.1/track.search?apikey=${API_KEY}`;
-
 }
