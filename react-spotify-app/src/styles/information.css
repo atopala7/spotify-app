@@ -18,6 +18,11 @@
     padding-left: 1em;
 }
 
+.infoItem .infoItemTitle {
+    padding-left: 1em;
+    overflow-wrap: normal;
+}
+
 @media only screen and (max-width: 600px) {
     .infoItem {
         display: inline;

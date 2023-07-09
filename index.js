@@ -9,15 +9,25 @@ const REDIRECT_URI = process.env.REDIRECT_URI;
 // Musixmatch API key saved onto the server
 const MUSIXMATCH_API_KEY = process.env.MUSIXMATCH_API_KEY;
 
+const ORIGIN = "http://192.168.4.158:3000";
+
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const port = 8888;
+
+app.use(cors())
+
+const axios = require("axios");
 
 const reactURI = REDIRECT_URI.substring(0, REDIRECT_URI.indexOf(":8888"));
 
 const querystring = require("querystring");
 
-const axios = require("axios");
+const corsOptions = {
+	origin: ORIGIN,
+	optionSuccessStatus: 200
+}
 
 console.log("CLIENT_ID: " + process.env.CLIENT_ID);
 
@@ -35,6 +45,71 @@ const stateKey = "spotify_auth_state";
 
 app.get('/', (req, res) => {
 	res.send("<a href='/login'>Login</a>");
+});
+
+// Return data from the Musixmatch API endpoint
+app.get("/musixmatch", async (req, res) => {
+	const apiKey = MUSIXMATCH_API_KEY;
+
+	const { artistName, trackName, albumName } = req.query;
+
+	let url = encodeURI(`https://api.musixmatch.com/ws/1.1/track.search?apikey=${apiKey}&q_track=${trackName}&q_artist=${artistName}`);
+
+	let statusCode = null;
+
+	console.log(url);
+
+	// Await a response from the Musixmatch server and convert it to a JSON object
+	let response = await fetch(url);
+	let json = await response.json();
+
+	console.log(json);
+	statusCode = json.message.header.status_code;
+	console.log(statusCode);
+
+	if (statusCode != '200') {
+		res.send(json);
+		return;
+	}
+
+	const tracks = json.message.body.track_list;
+	
+    let song = null;
+
+    // The Musixmatch API returns an array of tracks matching (to some degree) the given song name and artist
+    // Loop through the array to find the one closest to the song we're looking for
+    // TODO: Account for differences in puctuation or superfluous labels in track names (e.g. (Live), (Remix), etc.)
+    for (let currentTrack of tracks) {
+        const current = currentTrack.track;
+		console.log(current.track_name + " by " + current.artist_name);
+		
+        // if (current.track_name.replace(/[^\w\']|_/g, "").replace(/\s+/g, " ") === trackName.replace(/[^\w\']|_/g, "").replace(/\s+/g, " ") 
+		if (current.track_name === trackName && current.artist_name.includes(artistName) && current.has_lyrics === 1) {
+			song = current;
+        }
+    }
+
+	const trackID = song.track_id;
+	
+	console.log(trackID);
+
+	url = encodeURI(`https://api.musixmatch.com/ws/1.1/track.lyrics.get?apikey=${apiKey}&track_id=${trackID}`);
+
+	console.log(url);
+
+	// Await a response from the Musixmatch server and convert it to a JSON object
+	response = await fetch(url);
+	json = await response.json();
+
+	if (statusCode != '200') {
+		res.send(json);
+		return;
+	}
+
+	// Send back an object containing the song lyrics as well as additional copyright information
+	// res.send(json.message.body.lyrics);
+
+	res.send(json);
 });
 
 // Log in with OAuth to receive an authorization code
