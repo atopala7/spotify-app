@@ -31,7 +31,7 @@ const Lyrics = () => {
           setStatus(statusCode);
 
           if (statusCode == 200) {
-            const songLyrics = songLyricsResponse.data;       
+            const songLyrics = songLyricsResponse.data.message.body.lyrics;
             console.log(songLyrics);
             setLyrics(formatLyrics(songLyrics));
           }
