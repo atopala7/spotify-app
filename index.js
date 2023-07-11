@@ -43,7 +43,7 @@ const generateRandomString = (length) => {
 
 const stateKey = "spotify_auth_state";
 
-app.get('/', (req, res) => {
+app.get('/home', (req, res) => {
 	res.send("<a href='/login'>Login</a>");
 });
 

@@ -10,7 +10,7 @@ import {
 import { accessToken, logout } from './spotify';
 import { Root, Login, Data, Profile, Information, Lyrics } from './pages';
 
-import './App.css';
+// import './App.css';
 
 function App() {
   const [token, setToken] = useState(null);
