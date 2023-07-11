@@ -14,7 +14,7 @@ const ORIGIN = "http://192.168.4.158:3000";
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const port = 8888;
+const port = process.env.PORT || 8888;
 
 app.use(cors())
 
@@ -43,7 +43,7 @@ const generateRandomString = (length) => {
 
 const stateKey = "spotify_auth_state";
 
-app.get('/home', (req, res) => {
+app.get('/', (req, res) => {
 	res.send("<a href='/login'>Login</a>");
 });
 
