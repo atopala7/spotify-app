@@ -20,7 +20,7 @@ app.use(cors())
 
 const axios = require("axios");
 
-const reactURI = REDIRECT_URI.substring(0, REDIRECT_URI.indexOf(":8888"));
+const reactURI = REDIRECT_URI.substring(0, REDIRECT_URI.indexOf(":" + port));
 
 const querystring = require("querystring");
 

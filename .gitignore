@@ -4,3 +4,7 @@ notes.txt
 authorization-code-diagram.png
 TODO.txt
 react-spotify-app
+..gitignore.un~
+.gitignore~
+.package.json.un~
+package.json~
