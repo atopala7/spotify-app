@@ -8,7 +8,6 @@ const Login = () => (
         </p>
         <a
         className="Login-button"
-        // className="App-link"
         href="http://192.168.4.158:8888/login"
         rel="noopener noreferrer"
         >
