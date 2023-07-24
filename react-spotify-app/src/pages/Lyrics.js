@@ -1,7 +1,6 @@
 import { React, useState, useEffect } from 'react';
 import { useOutletContext } from "react-router-dom";
 
-import { getArtistInformation, getArtistsInformation } from '../wikipedia';
 import { getLyrics } from '../musixmatch';
 import { catchErrors } from '../utils';
 
@@ -10,7 +9,7 @@ import '../styles/lyrics.css'
 const Lyrics = () => {
      /**
      * STATE VARIABLES
-     * Info is the data retured by the Wikipedia API when given the (first, if multiple) artist's name
+     * Info is the data retured by the Musixmatch API when given the (first, if multiple) artist's name
      */
     const [lyrics, setLyrics] = useState(null);
     const [status, setStatus] = useState(null);
@@ -31,7 +30,7 @@ const Lyrics = () => {
           setStatus(statusCode);
 
           if (statusCode == 200) {
-            const songLyrics = songLyricsResponse.data;       
+            const songLyrics = songLyricsResponse.data.message.body.lyrics;       
             console.log(songLyrics);
             setLyrics(formatLyrics(songLyrics));
           }
