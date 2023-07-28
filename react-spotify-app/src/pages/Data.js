@@ -18,7 +18,6 @@ const Data = props => {
     const [song, setSong] = useState(null);
 
     useEffect(() => {
-        console.log("Data component's useEffect!");
         getSong(props.selectedSong);
     }, [props.selectedSong]);
 
@@ -31,11 +30,7 @@ const Data = props => {
                 albumName: data.item.album.name
             };
 
-            console.log("Got the song!");
-
             setSong(thisSong);
-
-            console.log("The song has been set");
 
             props.rootSelectSong(thisSong);
         }
@@ -48,7 +43,6 @@ const Data = props => {
         setStatus(null);
 
         if (!select) {
-            console.log("Getting the song...");
             const fetchData = async () => {
                 const currentlyPlaying = await getCurrentlyPlaying();
                 setData(currentlyPlaying.data);
@@ -71,9 +65,6 @@ const Data = props => {
             };
 
             setSong(thisSong);
-
-            console.log("The song has been set");
-            //setData(select);
         }
     }
 
