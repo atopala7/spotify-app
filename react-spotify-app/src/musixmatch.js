@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+const PORT = 8888;
+
 const URL = "http://192.168.4.158:8888/musixmatch";
 
 export const getLyrics = async (trackName, artists, albumName) => {
