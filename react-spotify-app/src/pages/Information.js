@@ -17,10 +17,6 @@ const Information = () => {
     // If no song is playing, this will remain undefined, as it should
     let song = useOutletContext();
 
-    // console.log("Information component song-------------------------------");
-    // console.log(song);
-    // console.log("Information component song-------------------------------");
-
     // The useEffect hook will run whenever the song variable changes
     // That is, when the Outlet context changes because of a change in the Data component, the hook will fire to get new Wiki data
     useEffect(() => {
