@@ -18,9 +18,9 @@ const Lyrics = () => {
     // If no song is playing, this will remain undefined, as it should
     let song = useOutletContext();
 
-    console.log("Lyrics component song-------------------------------");
-    console.log(song);
-    console.log("Lyrics component song-------------------------------");
+    // console.log("Lyrics component song-------------------------------");
+    // console.log(song);
+    // console.log("Lyrics component song-------------------------------");
 
     // The useEffect hook will run whenever the song variable changes
     useEffect(() => {
@@ -30,7 +30,7 @@ const Lyrics = () => {
           setStatus(statusCode);
 
           if (statusCode == 200) {
-            const songLyrics = songLyricsResponse.data.message.body.lyrics;       
+            const songLyrics = songLyricsResponse.data.message.body.lyrics;
             console.log(songLyrics);
             setLyrics(formatLyrics(songLyrics));
           }
