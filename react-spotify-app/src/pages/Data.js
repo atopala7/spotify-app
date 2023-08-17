@@ -94,6 +94,12 @@ const Data = props => {
                     <Outlet />
                 </>
             ) ||
+            status >= 400 && (
+                <>
+                    <p>No song is currently playing.</p>
+                    <Outlet />
+                </>
+            ) ||
             (
                 <>
                     <p>Loading currently playing song...</p>
