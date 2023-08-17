@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 import { getCurrentlyPlaying } from '../spotify';
 import { catchErrors } from '../utils';
 
-import '../styles/data.css'
+// import '../styles/data.css'
 import refresh from '../images/refresh.png';
 
 const Data = props => {
@@ -72,20 +72,26 @@ const Data = props => {
         <>
             {song && (
                 <>
-                <div className='data'>
-                    <div className='data-image-container' onClick={() => {
-                        getSong(null);
-                    }}>
-                        <img className='data-image' src={song.albumArt} />
-                        <img className='data-refresh' src={refresh} />
-                    </div>
-                    <div className='data-info'>
-                        <h1>{song.songName}</h1>
-                        <h2>{song.artists.map(artist => artist.name).join(', ')}</h2>
-                        <h2>{song.albumName}</h2>
+                <div className="container-lg">
+                    <div className="row justify-content-center align-items-center">
+                        <div class="col-md-5 text-center d-block">
+                            <div className="data-image-container" onClick={() => {
+                                getSong(null);
+                            }}>
+                                <img className="data-image" src={song.albumArt} />
+                                {/* <img className='data-refresh' src={refresh} /> */}
+                            </div>
+                        </div>
+                        <div className="data-info col-md-5 text-center text-md-start">
+                            <h1>{song.songName}</h1>
+                            <h2>{song.artists.map(artist => artist.name).join(', ')}</h2>
+                            <h2>{song.albumName}</h2>
+                        </div>
                     </div>
                 </div>
-                <Outlet context={song}/>
+                <div className="card">
+                    <Outlet context={song}/>
+                </div>
                 </>
             ) ||
             status == 204 && (
