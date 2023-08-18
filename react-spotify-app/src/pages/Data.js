@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 import { getCurrentlyPlaying } from '../spotify';
 import { catchErrors } from '../utils';
 
-// import '../styles/data.css'
+import '../styles/data.css'
 import refresh from '../images/refresh.png';
 
 const Data = props => {
@@ -80,6 +80,9 @@ const Data = props => {
                             }}>
                                 <img className="data-image" src={song.albumArt} />
                                 {/* <img className='data-refresh' src={refresh} /> */}
+                                {/* TODO: Rewrite the refresh image event in JS */}
+                                {/* TODO: Or remove the refresh function entirely.
+                                Instead, on a web browser, use the album art as play/pause */}
                             </div>
                         </div>
                         <div className="data-info col-md-5 text-center text-md-start">
@@ -89,7 +92,7 @@ const Data = props => {
                         </div>
                     </div>
                 </div>
-                <div className="card">
+                <div className="context card">
                     <Outlet context={song}/>
                 </div>
                 </>
