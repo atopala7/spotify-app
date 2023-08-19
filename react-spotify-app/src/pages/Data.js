@@ -92,7 +92,7 @@ const Data = props => {
                         </div>
                     </div>
                 </div>
-                <div className="context card">
+                <div className="outlet-container card">
                     <Outlet context={song}/>
                 </div>
                 </>
