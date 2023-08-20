@@ -80,7 +80,6 @@ const Data = props => {
                             }}>
                                 <img className="data-image" src={song.albumArt} />
                                 {/* <img className='data-refresh' src={refresh} /> */}
-                                {/* TODO: Rewrite the refresh image event in JS */}
                                 {/* TODO: Or remove the refresh function entirely.
                                 Instead, on a web browser, use the album art as play/pause */}
                             </div>
