@@ -19,11 +19,7 @@ img.data-image {
     z-index: 1;
 } */
 
-.data-image-container:hover {
-    border-radius: 50%;
-}
-
-.data-image-container:hover img.data-image {
+.data-image-container img.data-image:hover {
     opacity: 0.5;
     border-radius: 50%;
 }
