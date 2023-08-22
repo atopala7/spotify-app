@@ -74,7 +74,7 @@ const Data = props => {
                 <>
                 <div className="container-lg">
                     <div className="row justify-content-center align-items-center">
-                        <div class="col-md-5 text-center d-block">
+                        <div class="col-md-4 text-center d-flex justify-content-center justify-content-md-end align-items-center">
                             <div className="data-image-container" onClick={() => {
                                 getSong(null);
                             }}>
@@ -84,7 +84,7 @@ const Data = props => {
                                 Instead, on a web browser, use the album art as play/pause */}
                             </div>
                         </div>
-                        <div className="data-info col-md-5 text-center text-md-start">
+                        <div className="data-info col-md-8 text-center text-md-start">
                             <h1>{song.songName}</h1>
                             <h2>{song.artists.map(artist => artist.name).join(', ')}</h2>
                             <h2>{song.albumName}</h2>
