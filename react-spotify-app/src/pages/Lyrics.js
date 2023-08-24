@@ -26,11 +26,11 @@ const Lyrics = () => {
     useEffect(() => {
         const fetchData = async () => {
           const songLyricsResponse = await getLyrics(song.songName, song.artists, song.albumName);
-          const statusCode = songLyricsResponse.data.message.header.status_code;
+          const statusCode = songLyricsResponse.data.message?.header?.status_code;
           setStatus(statusCode);
 
           if (statusCode == 200) {
-            const songLyrics = songLyricsResponse.data.message.body.lyrics;
+            const songLyrics = songLyricsResponse.data.message?.body?.lyrics;
             console.log(songLyrics);
             setLyrics(formatLyrics(songLyrics));
           }

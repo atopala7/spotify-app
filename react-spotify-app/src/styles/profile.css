@@ -3,29 +3,29 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    background: linear-gradient(#222, #333);
+    /* background: linear-gradient(#222, #333); */
 }
 
 img.profile-image {
     max-width: 250px;
     min-width: 120px;
-    box-shadow: 0 4px 60px rgb(0 0 0 / 50%);
+    /* box-shadow: 0 4px 60px rgb(0 0 0 / 50%); */
     border-radius: 50%;
     transition: 0.5s;
 }
-
+/* 
 img.profile-image:hover {
     box-shadow: 0 4px 10px rgb(0 0 0 / 100%);
-}
+} */
 
 h1.profile-display-name {
     font-size: clamp(2.5rem, 10vw, 6rem);
     line-height: 1;
-    text-shadow: 0 4px 60px rgb(0 0 0 / 50%);
+    /* text-shadow: 0 4px 60px rgb(0 0 0 / 50%); */
     transition: 0.5s;
 }
 
-h1.profile-display-name:hover {
+/* h1.profile-display-name:hover {
     text-shadow: 0 4px 10px rgb(0 0 0 / 100%);
-}
+} */
 

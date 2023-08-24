@@ -82,14 +82,15 @@ app.get("/musixmatch", async (req, res) => {
     for (let currentTrack of tracks) {
         const current = currentTrack.track;
 		console.log(current.track_name + " by " + current.artist_name);
+		console.log(current);
 		
         // if (current.track_name.replace(/[^\w\']|_/g, "").replace(/\s+/g, " ") === trackName.replace(/[^\w\']|_/g, "").replace(/\s+/g, " ") 
-		if (current.track_name === trackName && current.artist_name.includes(artistName) && current.has_lyrics === 1) {
+		if (current.track_name.toLowerCase() === trackName.toLowerCase() && current.artist_name.includes(artistName) && current.has_lyrics === 1) {
 			song = current;
         }
     }
 
-	const trackID = song.track_id;
+	const trackID = song?.track_id;
 	
 	console.log(trackID);
 
