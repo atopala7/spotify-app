@@ -84,7 +84,6 @@ app.get("/musixmatch", async (req, res) => {
 		console.log(current.track_name + " by " + current.artist_name);
 		console.log(current);
 		
-        // if (current.track_name.replace(/[^\w\']|_/g, "").replace(/\s+/g, " ") === trackName.replace(/[^\w\']|_/g, "").replace(/\s+/g, " ") 
 		if (current.track_name.toLowerCase() === trackName.toLowerCase() && current.artist_name.includes(artistName) && current.has_lyrics === 1) {
 			song = current;
         }
