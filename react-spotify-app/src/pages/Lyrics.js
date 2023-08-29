@@ -18,10 +18,6 @@ const Lyrics = () => {
     // If no song is playing, this will remain undefined, as it should
     let song = useOutletContext();
 
-    // console.log("Lyrics component song-------------------------------");
-    // console.log(song);
-    // console.log("Lyrics component song-------------------------------");
-
     // The useEffect hook will run whenever the song variable changes
     useEffect(() => {
         const fetchData = async () => {
