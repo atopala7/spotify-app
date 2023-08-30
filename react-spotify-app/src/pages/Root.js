@@ -87,28 +87,14 @@ const Root = () => {
             </div>
         </section>
 
-        {/* <div className="root">
-            <div className="contents">
-                <header className="App-header">
-                    <nav>
-                    <NavLink to="/" className="Styled-button">Home</NavLink>
-                    <NavLink to="/information" className="Styled-button">Information</NavLink>
-                    <NavLink to="/lyrics" className="Styled-button">Lyrics</NavLink>
-                    <NavLink to="/profile" className="Styled-button">Profile</NavLink>
-                    <NavLink to="/logout" className="Styled-button Logout-button">Log Out</NavLink>
-                    </nav>
-                </header>
-                <Data selectedSong={song} rootSelectSong={selectSong} />
-            </div>
-            <div id="sidebar" onMouseOver={() => {
-                openSidebar();
-            }}
-            onMouseOut={() => {
-                closeSidebar();
-            }}>
-                <Recent rootSelectSong={selectSong} />
-            </div>
-        </div> */}
+        <div id="sidebar" onMouseOver={() => {
+            openSidebar();
+        }}
+        onMouseOut={() => {
+            closeSidebar();
+        }}>
+            <Recent rootSelectSong={selectSong} />
+        </div>
         </>
     )
 };
