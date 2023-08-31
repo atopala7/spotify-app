@@ -84,14 +84,14 @@ const Root = () => {
                 <Data selectedSong={song} rootSelectSong={selectSong} />
             </section>
 
-            <div id="sidebar" onMouseOver={() => {
-                openSidebar();
-            }}
-            onMouseOut={() => {
-                closeSidebar();
-            }}>
+            <aside id="sidebar" onMouseOver={() => {
+                    openSidebar();
+                }}
+                onMouseOut={() => {
+                    closeSidebar();
+                }}>
                 <Recent rootSelectSong={selectSong} />
-            </div>
+            </aside>
         </main>
         </>
     )
