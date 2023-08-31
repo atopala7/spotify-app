@@ -80,12 +80,8 @@ const Root = () => {
             </nav>
 
             {/* Main data component */}
-            <section id="data" className="bg-light">
-                <div className="container-lg">
-                    <div className="rounded">
-                        <Data selectedSong={song} rootSelectSong={selectSong} />
-                    </div>
-                </div>
+            <section id="data" className="bg-light container-lg rounded">
+                <Data selectedSong={song} rootSelectSong={selectSong} />
             </section>
 
             <div id="sidebar" onMouseOver={() => {
