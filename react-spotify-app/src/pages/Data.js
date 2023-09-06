@@ -77,6 +77,10 @@ const Data = props => {
                         <div class="col-md-4 text-center d-flex justify-content-center justify-content-md-end align-items-center">
                             <div className="data-image-container" onClick={() => {
                                 getSong(null);
+                            }} onMouseOver={() => {                              
+                                // document.querySelector(".data-image-container").style.setProperty("--refreshWidth", "150px");
+                                // document.querySelector(".data-image-container").style.setProperty("--refreshOffset", "calc(var(--containerWidth) * 0.5 - var(--refreshWidth) * 0.5");
+                                // document.querySelector(".data-image-container").style.setProperty("--refreshOrigin", "calc(var(--refreshWidth) * 0.5 + var(--refreshOffset)) calc(var(--refreshWidth) * 0.5  + var(--refreshOffset))");
                             }}>
                                 <img className="data-image" src={song.albumArt} />
                                 {/* <img className='data-refresh' src={refresh} /> */}

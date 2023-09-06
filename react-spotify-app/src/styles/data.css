@@ -8,7 +8,13 @@
     transition: 0.5s;
 }
 
+/* The container holding the album art as well as the refresh image that appears when hovering over it */
+/* The CSS variables are in place so that the size and position of the refresh image can be adjusted through JS, since the ::before pseudo-element won't exist in the DOM */
 .data-image-container {
+    --containerWidth: 250px;
+    --refreshWidth: 200px;
+    --refreshOffset: calc(var(--containerWidth) * 0.5 - var(--refreshWidth) * 0.5);
+    --refreshOrigin: calc(var(--refreshWidth) * 0.5 + var(--refreshOffset)) calc(var(--refreshWidth) * 0.5  + var(--refreshOffset));
     max-width: 250px;
     max-height: 250px;
     min-width: 120px;
@@ -25,16 +31,17 @@
 .data-image-container::before {
     content: "";
     background-image: url("../images/refresh.png");
+    /* background-color: black; */
     background-size: contain;
     background-repeat: no-repeat;
     opacity: 0;
     max-width: 250px;
     max-height: 250px;
-    min-width: 250px;
-    min-height: 250px;
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: var(--refreshWidth);
+    height: var(--refreshWidth);
+    transform: translate(var(--refreshOffset), var(--refreshOffset));
+    transform-origin: var(--refreshOrigin);
     transition: rotate 1s, opacity 0.5s ease-in-out;
     z-index: 9999;
 }
