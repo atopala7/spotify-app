@@ -1,30 +1,29 @@
 .info {
-    display: inline-flex;
-    flex-direction: column;
-    gap: 2em;
-    /* background: linear-gradient(#222, #333); */
-    width: 100%;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2em;
+  width: 100%;
 }
 
 .infoItem {
-    display: inline-flex;
-    align-items: center;
-    justify-content: flex-start;
-    position: relative;
-    width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  width: 100%;
 }
 
 .infoItem .infoItemContents {
-    padding-left: 1em;
+  padding-left: 1em;
 }
 
 .infoItem .infoItemTitle {
-    padding-left: 1em;
-    overflow-wrap: normal;
+  padding-left: 1em;
+  overflow-wrap: normal;
 }
 
 @media only screen and (max-width: 600px) {
-    .infoItem {
-        display: inline;
-    }
+  .infoItem {
+    display: inline;
+  }
 }
