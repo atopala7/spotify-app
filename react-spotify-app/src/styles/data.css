@@ -35,7 +35,6 @@
 .data-image-container::before {
   content: "";
   background-image: url("../images/refresh.png");
-  /* background-color: black; */
   background-size: contain;
   background-repeat: no-repeat;
   opacity: 0;
