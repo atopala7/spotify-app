@@ -2,8 +2,8 @@ import logo from "../images/logo.svg";
 
 const Login = () => (
   <>
-    <main class="container-lg">
-      <div class="justify-content-center align-items-center">
+    <main class="container-lg bg-light">
+      <div class="justify-content-center align-items-center text-center">
         <img src={logo} className="App-logo" alt="logo" />
         <p>Spotify App</p>
         <a
