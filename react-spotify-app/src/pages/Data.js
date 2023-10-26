@@ -79,23 +79,23 @@ const Data = (props) => {
                   onClick={() => {
                     getSong(null);
                   }}
-                  onMouseOver={() => {
-                    document
-                      .querySelector(".data-image-container")
-                      .style.setProperty("--refreshWidth", "150px");
-                    document
-                      .querySelector(".data-image-container")
-                      .style.setProperty(
-                        "--refreshOffset",
-                        "calc(var(--containerWidth) * 0.5 - var(--refreshWidth) * 0.5"
-                      );
-                    document
-                      .querySelector(".data-image-container")
-                      .style.setProperty(
-                        "--refreshOrigin",
-                        "calc(var(--refreshWidth) * 0.5 + var(--refreshOffset)) calc(var(--refreshWidth) * 0.5  + var(--refreshOffset))"
-                      );
-                  }}
+                  // onMouseOver={() => {
+                  //   document
+                  //     .querySelector(".data-image-container")
+                  //     .style.setProperty("--refreshWidth", "150px");
+                  //   document
+                  //     .querySelector(".data-image-container")
+                  //     .style.setProperty(
+                  //       "--refreshOffset",
+                  //       "calc(var(--containerWidth) * 0.5 - var(--refreshWidth) * 0.5"
+                  //     );
+                  //   document
+                  //     .querySelector(".data-image-container")
+                  //     .style.setProperty(
+                  //       "--refreshOrigin",
+                  //       "calc(var(--refreshWidth) * 0.5 + var(--refreshOffset)) calc(var(--refreshWidth) * 0.5  + var(--refreshOffset))"
+                  //     );
+                  // }}
                 >
                   <img className="data-image" src={song.albumArt} />
                   {/* <img className='data-refresh' src={refresh} /> */}
