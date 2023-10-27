@@ -150,46 +150,6 @@ app.get("/login", (req, res) => {
 // The Spotify authorization endpoint will send the user here, where we'll exchange the authorization code for an access token
 app.get("/callback", (req, res) => {
   console.log("callback");
-  // Get the authorization code from Spotify's request
-  const code = req.query.code || null;
-  console.log("code: " + code);
-
-  // Send a POST request to the Spotify Accounts Service /api/token endpoint
-  axios({
-    method: "post",
-    url: "https://accounts.spotify.com/api/token",
-    data: querystring.stringify({
-      grant_type: "authorization_code",
-      code: code,
-      redirect_uri: REDIRECT_URI
-    }),
-    headers: {
-      "content-type": "application/x-www-form-urlencoded",
-      // The Authorization header needs to be a base 64 encoded string in this format: "Authorization: Basic <base 64 encoded client_id:client_secret>"
-      Authorization: `Basic ${new Buffer.from(
-        `${CLIENT_ID}:${CLIENT_SECRET}`
-      ).toString("base64")}`
-    }
-  })
-    .then((response) => {
-      if (response.status === 200) {
-        const { access_token, refresh_token, expires_in } = response.data;
-
-        const queryParams = querystring.stringify({
-          access_token,
-          refresh_token,
-          expires_in
-        });
-
-        // Redirect the user to the React app, with the access and refresh tokens as parameters
-        res.redirect(`${reactURI}:3000/?${queryParams}`);
-      } else {
-        res.redirect(`/?${querystring.stringify({ error: "invalid_token" })}`);
-      }
-    })
-    .catch((error) => {
-      res.send(error);
-    });
 });
 
 // Request a new access token using the refresh token we got from the POST request
