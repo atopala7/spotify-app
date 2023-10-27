@@ -20,7 +20,8 @@ app.use(cors());
 
 const axios = require("axios");
 
-const reactURI = REDIRECT_URI.substring(0, REDIRECT_URI.indexOf(":" + port));
+// const reactURI = REDIRECT_URI.substring(0, REDIRECT_URI.indexOf(":" + port));
+const reactURI = "http://192.168.4.158:3000";
 
 const querystring = require("querystring");
 
@@ -45,6 +46,7 @@ const generateRandomString = (length) => {
 const stateKey = "spotify_auth_state";
 
 app.get("/", (req, res) => {
+  console.log("REDIRECT_URI: " + REDIRECT_URI);
   res.send("<a href='/login'>Login</a>");
 });
 
