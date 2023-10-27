@@ -149,6 +149,7 @@ app.get("/login", (req, res) => {
 
 // The Spotify authorization endpoint will send the user here, where we'll exchange the authorization code for an access token
 app.get("/callback", (req, res) => {
+  console.log("callback");
   // Get the authorization code from Spotify's request
   const code = req.query.code || null;
   console.log("code: " + code);
