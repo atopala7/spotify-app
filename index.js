@@ -21,7 +21,7 @@ app.use(cors());
 const axios = require("axios");
 
 // const reactURI = REDIRECT_URI.substring(0, REDIRECT_URI.indexOf(":" + port));
-const reactURI = "http://192.168.4.158:3000";
+const reactURI = "http://192.168.4.158";
 
 const querystring = require("querystring");
 
