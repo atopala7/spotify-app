@@ -150,6 +150,8 @@ app.get("/login", (req, res) => {
 // The Spotify authorization endpoint will send the user here, where we'll exchange the authorization code for an access token
 app.get("/callback", (req, res) => {
   console.log("callback");
+  res.send("callback");
+  return;
 });
 
 // Request a new access token using the refresh token we got from the POST request
