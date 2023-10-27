@@ -2,10 +2,13 @@ import logo from "../images/logo.svg";
 
 const Login = () => (
   <>
-    <main className="bg-dark vh-100">
-      <div class="justify-content-center align-items-center text-center container-lg">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p class="text-light">Spotify App</p>
+    <main className="bg-dark vh-100 align-items-center d-flex">
+      <div className="text-center container-lg">
+        <span
+          className="bi bi-music-note-beamed text-light"
+          style={{ fontSize: "10rem" }}
+        />
+        <h1 className="fw-bold text-light">This Song</h1>
         <a
           className="Login-button"
           href="http://192.168.4.158:8888/login"
