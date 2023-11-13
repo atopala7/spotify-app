@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Outlet,
-  NavLink,
-} from 'react-router-dom';
+  NavLink
+} from "react-router-dom";
 
-import { accessToken, logout } from './spotify';
-import { Root, Login, Data, Profile, Information, Lyrics } from './pages';
+import { accessToken, logout } from "./spotify";
+import { Root, Login, Data, Profile, Information, Lyrics } from "./pages";
 
 // import './App.css';
 
@@ -21,12 +21,12 @@ function App() {
 
   return (
     <div className="App">
-        {!token ? (
-          <>
-            <Login />
-          </>
-        ) : (
-          <>
+      {!token ? (
+        <>
+          <Login />
+        </>
+      ) : (
+        <>
           <Router>
             <Routes>
               <Route path="/" element={<Root />}>
@@ -38,18 +38,14 @@ function App() {
               </Route>
             </Routes>
           </Router>
-          </>
-        )}  
+        </>
+      )}
     </div>
   );
 
   function Logout() {
     console.log("Logging out...");
-    return (
-      <>
-        {logout()}
-      </>
-    )
+    return <>{logout()}</>;
   }
 }
 

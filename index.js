@@ -1,4 +1,4 @@
-// This express app gets authorization and refresh tokens from Spotify
+// This express app gets authorization and refresh tokens from Spotify and Musixmatch, and sends them to the React app
 
 // Spotify environment variables saved onto the server
 require("dotenv").config();
